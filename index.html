@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudySupport</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8.4.5/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
@@ -13,59 +13,97 @@
         <h1>StudySupport</h1>
     </header>
 
-    <div class="swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="slide-content">
-                    <h2>Ти не один — ми тут, щоб допомогти!</h2>
-                    <p>Допоможемо виконати завдання будь-якої складності — швидко, якісно та з турботою про результат. Оберіть, хто ви:</p>
-                    <div class="button-container">
-                        <button onclick="window.location.href='https://t.me/studysupport_ua_bot'">Я замовник</button>
-                        <button onclick="window.location.href='https://t.me/studysupport_shop'">Я виконавець</button>
-                    </div>
+    <main id="fullpage">
+
+        <section class="section" id="section1">
+            <div class="content">
+                <h2>Ти не один — ми тут, щоб допомогти!</h2>
+                <p>Допоможемо виконати завдання будь-якої складності — швидко, якісно та з турботою про результат. Оберіть, хто ви:</p>
+                <div class="button-container">
+                    <button onclick="window.location.href='https://t.me/studysupport_ua_bot'">Я замовник</button>
+                    <button onclick="window.location.href='https://t.me/studysupport_shop'">Я виконавець</button>
                 </div>
             </div>
-            
-            <div class="swiper-slide">
-                <div class="slide-content">
-                    <h2>Відгуки користувачів</h2>
-                    <div class="review">
+        </section>
+
+        <section class="section" id="section2">
+            <div class="content">
+                <h2>Широкий спектр послуг для твого успіху</h2>
+                <p>Незалежно від рівня складності чи обсягу, StudySupport готовий прийняти твої виклики! Ми допоможемо з усім: від базових шкільних завдань до комплексних дипломних робіт, курсових проектів, рефератів та магістерських дисертацій. Наші спеціалісти забезпечать якісне виконання, дотримання термінів та індивідуальний підхід до кожного проєкту. Довір нам свої завдання і звільни час для важливішого!</p>
+            </div>
+        </section>
+
+        <section class="section" id="section3">
+            <div class="content">
+                <h2>Що говорять наші клієнти</h2>
+                <div class="review-carousel">
+                    <div class="review-item">
                         <p class="review-text">"Коли я працював над магістерською з інженерії, виникало дуже багато складнощів з написанням, тому вирішив звернутись до спеціалістів. Зробили якісно і головне швидко. За два дні замовлення було в мене, моя магістерська пройшла антиплагіат на 97/100. Дякую, буду рекомендувати друзям!"</p>
                         <p class="review-author">- Загайдачний Дмитро</p>
                     </div>
+                    <div class="review-item" style="display: none;">
+                        <p class="review-text">"Дуже вдячний команді StudySupport за допомогу з курсовою роботою з економіки. Викладач був вражений якістю аналізу та оформлення. Це мій не перший досвід співпраці, і завжди результат перевершує очікування!"</p>
+                        <p class="review-author">- Анна Власенко</p>
+                    </div>
+                    <div class="review-item" style="display: none;">
+                        <p class="review-text">"Постійно звертаюсь сюди за допомогою з домашніми завданнями з математики та фізики. Завжди зрозуміло пояснюють і допомагають розібратися з матеріалом, а не просто дають відповіді. Дякую за терпіння!"</p>
+                        <p class="review-author">- Олег Ковальчук</p>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
                 </div>
             </div>
-            
-            <div class="swiper-slide">
-                <div class="slide-content">
-                    <h2>Виникла проблема?</h2>
-                    <p>Звертайтесь до нас! Наші менеджери допоможуть з будь-якими питаннями щодо нашої платформи чи послуг.</p>
-                    
-                    <form class="contact-form" name="contact" netlify>
-                        <p>
-                            <label for="name" style="display: none;">Ваше ім'я</label>
-                            <input type="text" id="name" name="name" placeholder="Ваше ім'я" required>
-                        </p>
-                        <p>
-                            <label for="email" style="display: none;">Ваша пошта</label>
-                            <input type="email" id="email" name="email" placeholder="Ваша пошта" required>
-                        </p>
-                        <p>
-                            <label for="message" style="display: none;">Ваше запитання</label>
-                            <textarea id="message" name="message" placeholder="Ваше запитання" required></textarea>
-                        </p>
-                        <button type="submit">Надіслати</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        
-        <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-    </div>
+        </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.5/swiper-bundle.min.js"></script>
+        <section class="section" id="section4">
+            <div class="content">
+                <h2>Потрібна допомога? Зверніться до нас!</h2>
+                <p>Маєте запитання або специфічну проблему? Заповніть форму, і наші менеджери зв'яжуться з вами.</p>
+                
+                <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact" />
+                    <p style="display: none;">
+                        <label>Не заповнюйте це поле: <input name="bot-field" /></label>
+                    </p>
+                    <p>
+                        <label for="form-name" class="visually-hidden">Ваше ім'я</label>
+                        <input type="text" id="form-name" name="name" placeholder="Ваше ім'я" required>
+                    </p>
+                    <p>
+                        <label for="form-email" class="visually-hidden">Ваша пошта</label>
+                        <input type="email" id="form-email" name="email" placeholder="Ваша пошта" required>
+                    </p>
+                    <p>
+                        <label for="form-problem" class="visually-hidden">Опис проблеми</label>
+                        <textarea id="form-problem" name="problem-description" placeholder="Опис вашої проблеми" required></textarea>
+                    </p>
+                    <button type="submit">Надіслати запит</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="section" id="section5">
+            <div class="content">
+                <h2>Наші контакти та соціальні мережі</h2>
+                <p>Завжди на зв'язку, щоб допомогти тобі досягти академічних успіхів!</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:helperstudykpi@gmail.com">helperstudykpi@gmail.com</a></p>
+                    <p><i class="fab fa-telegram-plane"></i> Telegram (Замовник): <a href="https://t.me/studysupport_ua_bot" target="_blank">@studysupport_ua_bot</a></p>
+                    <p><i class="fab fa-telegram-plane"></i> Telegram (Виконавець): <a href="https://t.me/studysupport_shop" target="_blank">@studysupport_shop</a></p>
+                </div>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Viber"><i class="fab fa-viber"></i></a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
     <script src="script.js"></script>
 
 </body>
