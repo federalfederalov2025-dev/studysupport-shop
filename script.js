@@ -1,63 +1,47 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const main = document.getElementById('fullpage');
-    const sections = document.querySelectorAll('.section');
-    let currentSection = 0;
-    let isScrolling = false;
-
-    // --- Логіка вертикальної прокрутки ---
-    function scrollToSection(index) {
-        if (index >= 0 && index < sections.length) {
-            main.style.transform = `translateY(-${index * 100}vh)`;
-            currentSection = index;
-        }
-    }
-
-    document.addEventListener('wheel', event => {
-        if (isScrolling) return;
-        isScrolling = true;
-
-        if (event.deltaY > 0) {
-            if (currentSection < sections.length - 1) {
-                currentSection++;
-                scrollToSection(currentSection);
-            }
-        } else {
-            if (currentSection > 0) {
-                currentSection--;
-                scrollToSection(currentSection);
-            }
-        }
-
-        setTimeout(() => {
-            isScrolling = false;
-        }, 1000); // Затримка, щоб уникнути занадто швидкої прокрутки
-    });
-
-    // --- Логіка каруселі відгуків ---
-    const reviewItems = document.querySelectorAll('.review-item');
+    // Отримуємо всі елементи відгуків та навігаційні крапки
+    const reviews = document.querySelectorAll('.review-item');
     const dots = document.querySelectorAll('.dot');
-    let currentReview = 0;
-
+    
+    // Індекс поточного активного відгуку
+    let currentReviewIndex = 0;
+    
+    // Функція для показу певного відгуку
     function showReview(index) {
-        reviewItems.forEach((item, i) => {
-            item.style.display = i === index ? 'block' : 'none';
+        // Ховаємо всі відгуки
+        reviews.forEach(review => {
+            review.style.display = 'none';
         });
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
+        
+        // Забираємо клас 'active' з усіх крапок
+        dots.forEach(dot => {
+            dot.classList.remove('active');
         });
-        currentReview = index;
+        
+        // Показуємо потрібний відгук та робимо відповідну крапку активною
+        reviews[index].style.display = 'block';
+        dots[index].classList.add('active');
     }
-
+    
+    // Функція для показу наступного відгуку
+    function showNextReview() {
+        // Збільшуємо індекс, якщо він перевищує кількість відгуків - починаємо з нуля
+        currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
+        showReview(currentReviewIndex);
+    }
+    
+    // Додаємо обробники подій для крапок
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            showReview(index);
+            // При кліку на крапку показуємо відповідний відгук
+            currentReviewIndex = index;
+            showReview(currentReviewIndex);
         });
     });
-
-    setInterval(() => {
-        let nextReview = (currentReview + 1) % reviewItems.length;
-        showReview(nextReview);
-    }, 5000); // Кожні 5 секунд
-
-    showReview(0);
+    
+    // Встановлюємо інтервал для автоматичної зміни відгуків (кожні 5 секунд)
+    setInterval(showNextReview, 5000);
+    
+    // Показуємо перший відгук при завантаженні сторінки
+    showReview(currentReviewIndex);
 });
