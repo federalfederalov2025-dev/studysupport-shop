@@ -1,0 +1,178 @@
+/* --- Загальні стилі та змінні --- */
+:root {
+    --primary-color: #f47c48;
+    --primary-hover-color: #f39c42;
+    --dark-bg: #1c1c1c;
+    --light-text: #fff;
+    --medium-text: #ddd;
+    --dark-surface: #333;
+    --dark-surface-field: #444;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    overflow-x: hidden;
+    position: relative;
+    /* background-image: url('your-background-image.jpg'); */ /* <-- Розкоментуйте та вставте своє фонове зображення */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* --- Шапка сайту --- */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    margin: 0;
+}
+
+/* --- Слайдер --- */
+.swiper {
+    width: 100%;
+    height: calc(100vh - 85px); /* Висота слайдера на весь екран мінус шапка */
+    display: flex;
+    align-items: center;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.slide-content {
+    max-width: 800px;
+}
+
+.slide-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
+}
+
+.slide-content p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--medium-text);
+    margin-bottom: 30px;
+}
+
+/* --- Кнопки --- */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 15px 30px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--light-text);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--primary-hover-color);
+    transform: translateY(-3px);
+}
+
+/* --- Секція відгуків --- */
+.review-text {
+    font-style: italic;
+    margin-bottom: 15px !important;
+}
+
+.review-author {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* --- Форма контакту --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--dark-surface);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form p {
+    margin: 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--dark-surface-field);
+    color: var(--light-text);
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background-color: #555;
+    outline: none;
+}
+
+/* --- Стилі для навігації Swiper --- */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary-color) !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--primary-color) !important;
+}
+
+/* --- Адаптивність --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    .slide-content h2 {
+        font-size: 2.2rem;
+    }
+    .slide-content p {
+        font-size: 1.2rem;
+    }
+    .button-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
