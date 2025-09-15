@@ -4,13 +4,224 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudySupport</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Загальні стилі та фон */
+        html {
+            scroll-behavior: smooth; /* Плавна прокрутка */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding-top: 80px; /* Відступ для фіксованого хедера */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* Градієнтний фон */
+            color: #333;
+        }
+
+        /* Стилі для хедера та навігації */
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 90%;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            color: #0056b3;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-left: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+            font-size: 1em;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        
+        /* Стилі для секцій */
+        .section {
+            padding: 60px 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            scroll-margin-top: 90px; /* Компенсація висоти хедера при переході по якорях */
+        }
+        
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+
+        .section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        /* Кнопки */
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .button-container button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        /* Карусель відгуків */
+        .review-carousel {
+            position: relative;
+            margin-top: 30px;
+        }
+        .review-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .review-text {
+            font-style: italic;
+            color: #444;
+        }
+        .review-author {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .carousel-nav {
+            margin-top: 20px;
+        }
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .dot.active {
+            background-color: #007BFF;
+        }
+        
+        /* Форма */
+        .contact-form {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        .contact-form button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #218838;
+        }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Контакти та соціальні мережі */
+        .contact-info p {
+            font-size: 1.1em;
+        }
+        .contact-info a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: #343a40;
+            font-size: 1.8em;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .social-icons a:hover {
+            color: #007BFF;
+        }
+
+    </style>
 </head>
 <body>
 
     <header>
         <h1>StudySupport</h1>
+        <nav>
+            <ul>
+                <li><a href="#section3">Відгуки</a></li>
+                <li><a href="#section4">Зробити замовлення</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main id="fullpage">
@@ -62,7 +273,6 @@
             <div class="content">
                 <h2>Потрібна допомога? Зверніться до нас!</h2>
                 <p>Маєте запитання або специфічну проблему? Заповніть форму, і наші менеджери зв'яжуться з вами.</p>
-                
                 <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                     <input type="hidden" name="form-name" value="contact" />
                     <p style="display: none;">
@@ -103,7 +313,7 @@
         </section>
 
     </main>
-
+    
     <script src="script.js"></script>
 
 </body>
