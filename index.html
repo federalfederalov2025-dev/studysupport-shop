@@ -30,17 +30,36 @@
             margin: 0;
             padding: 0;
             color: var(--dark-text);
-            background: linear-gradient(-45deg, #f5f7fa, #c3cfe2, #e6e9f0, #d9e1f2);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            /* Видалено градієнтний фон для body, оскільки перша секція тепер має своє зображення */
             overflow-x: hidden;
             position: relative;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* --- Стилі для першої секції (зустрічної) з фоновим зображенням --- */
+        #section1 {
+            background-image: url('https://kpi.ua/files/t-about-2023-12.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Ефект паралаксу */
+            position: relative;
+            isolation: isolate; /* Ізолює контекст накладання для псевдоелемента */
+            color: var(--light-text); /* Змінює колір тексту на білий для контрасту */
+        }
+
+        /* Затемнений оверлей для кращої читабельності тексту */
+        #section1::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--dark-bg-overlay);
+            z-index: -1; /* Поміщаємо під контентом */
+        }
+
+        #section1 .content h2,
+        #section1 .content p {
+            color: var(--light-text); /* Забезпечуємо білий колір тексту в першій секції */
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Легка тінь для тексту */
         }
 
         /* --- Шапка сайту --- */
@@ -647,6 +666,11 @@
                 right: 20px;
                 width: 45px;
                 height: 45px;
+            }
+
+            /* Адаптивність для першої секції */
+            #section1 {
+                background-attachment: scroll; /* Вимикаємо паралакс на мобільних */
             }
         }
     </style>
