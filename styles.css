@@ -1,224 +1,665 @@
-/* --- Загальні стилі та змінні --- */
-:root {
-    --primary-color: #f47c48;
-    --primary-hover-color: #f39c42;
-    --dark-bg-overlay: rgba(28, 28, 28, 0.85); /* Затемнення для фону */
-    --light-text: #fff;
-    --medium-text: #ddd;
-    --dark-surface: rgba(51, 51, 51, 0.9);
-    --dark-surface-field: #444;
-}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySupport</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Загальні стилі та змінні --- */
+        :root {
+            --primary-color: #4a6cf7;
+            --primary-hover-color: #3a56d4;
+            --secondary-color: #f47c48;
+            --secondary-hover-color: #f39c42;
+            --dark-bg-overlay: rgba(28, 28, 28, 0.85);
+            --light-text: #fff;
+            --medium-text: #ddd;
+            --dark-text: #333;
+            --dark-surface: rgba(255, 255, 255, 0.9);
+            --dark-surface-field: #f5f5f5;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
 
-html {
-    scroll-behavior: smooth;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: var(--light-text);
-    overflow: hidden; /* Важливо для кастомної прокрутки */
-    background-image: url('background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--dark-text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow-x: hidden;
+        }
 
-/* --- Шапка сайту --- */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 100;
-    box-sizing: border-box;
-}
+        /* --- Шапка сайту --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            box-sizing: border-box;
+            transition: all 0.4s ease;
+        }
 
-header h1 {
-    font-size: 2rem;
-    text-transform: uppercase;
-    color: var(--primary-color);
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    margin: 0;
-}
+        header.scrolled {
+            padding: 15px 20px;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
 
-/* --- Основний контейнер та секції --- */
-main {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-}
+        header h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
 
-.section {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 40px;
-    box-sizing: border-box;
-    background-color: var(--dark-bg-overlay);
-}
+        nav ul {
+            list-style: none;
+            margin: 15px 0 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
 
-.content {
-    max-width: 900px;
-    animation: fadeIn 1.5s ease-out;
-}
+        nav li {
+            margin: 0;
+        }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        nav a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            font-size: 1em;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
 
-.content h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.6);
-}
+        nav a:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            transform: translateY(-2px);
+        }
 
-.content p {
-    font-size: 1.5rem;
-    line-height: 1.7;
-    color: var(--medium-text);
-    margin-bottom: 30px;
-}
+        /* --- Основний контейнер та секції --- */
+        main {
+            position: relative;
+            width: 100%;
+        }
 
-/* --- Кнопки --- */
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+        .section {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 40px;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
 
-button {
-    padding: 15px 30px;
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 5px;
-    color: var(--light-text);
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-button:hover {
-    background-color: var(--primary-hover-color);
-    transform: translateY(-3px);
-}
+        .content {
+            max-width: 900px;
+            width: 100%;
+        }
 
-/* --- Секція відгуків --- */
-.review-carousel {
-    position: relative;
-    min-height: 250px;
-}
-.review-item {
-    animation: fadeIn 0.5s;
-}
-.review-text {
-    font-style: italic;
-    margin-bottom: 15px !important;
-}
-.review-author {
-    font-weight: bold;
-    color: var(--primary-color);
-}
-.carousel-nav {
-    margin-top: 20px;
-}
-.dot {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: #666;
-    border-radius: 50%;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.dot.active {
-    background-color: var(--primary-color);
-}
+        .content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+            position: relative;
+            padding-bottom: 15px;
+        }
 
-/* --- Форма контакту --- */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: var(--dark-surface);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
-    margin: 0 auto;
-}
-.contact-form p { margin: 0; }
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--dark-surface-field);
-    color: var(--light-text);
-    box-sizing: border-box;
-}
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
+        .content h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
 
-/* --- Секція контактів (футер) --- */
-.contact-info p {
-    font-size: 1.2rem;
-    margin: 10px 0;
-}
-.contact-info a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-.contact-info a:hover {
-    color: var(--primary-hover-color);
-}
-.contact-info i {
-    margin-right: 10px;
-}
+        .content p {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 30px;
+        }
 
-.social-icons {
-    margin-top: 30px;
-}
-.social-icons a {
-    color: var(--light-text);
-    font-size: 2rem;
-    margin: 0 15px;
-    transition: color 0.3s, transform 0.3s;
-}
-.social-icons a:hover {
-    color: var(--primary-color);
-    transform: scale(1.2);
-}
+        /* --- Кнопки --- */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
 
-/* --- Адаптивність --- */
-@media (max-width: 768px) {
-    header h1 { font-size: 1.8rem; }
-    .content h2 { font-size: 2.2rem; }
-    .content p { font-size: 1.2rem; }
-    .button-container { flex-direction: column; align-items: center; }
-    button { width: 100%; max-width: 300px; }
-}
+        .button-container button {
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 50px;
+            color: var(--light-text);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button-container button:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .button-container button:hover {
+            background-color: var(--primary-hover-color);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-container button:hover:after {
+            left: 100%;
+        }
+
+        /* --- Секція відгуків --- */
+        .review-carousel {
+            position: relative;
+            min-height: 250px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .review-item {
+            background-color: var(--light-text);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: scale(0.9);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .review-item.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+        
+        .review-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 0 30px;
+        }
+        
+        .review-text:before, .review-text:after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .review-text:before {
+            top: -20px;
+            left: 0;
+        }
+        
+        .review-text:after {
+            bottom: -40px;
+            right: 0;
+        }
+        
+        .review-author {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        
+        .carousel-nav {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.3);
+        }
+
+        /* --- Форма контакту --- */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: var(--light-text);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 0 auto;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        .section.visible .contact-form {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .contact-form p { 
+            margin: 0; 
+        }
+        
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: var(--dark-surface-field);
+            color: var(--dark-text);
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+        }
+        
+        .contact-form button {
+            padding: 15px;
+            background-color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            color: var(--light-text);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .contact-form button:hover {
+            background-color: var(--primary-hover-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* --- Секція контактів --- */
+        .contact-info p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .contact-info a:hover {
+            color: var(--primary-hover-color);
+            text-decoration: underline;
+        }
+        
+        .contact-info i {
+            font-size: 1.3rem;
+            width: 25px;
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            margin-top: 40px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-text);
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            transform: translateY(-5px);
+        }
+
+        /* --- Анімації --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-element.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Адаптивність --- */
+        @media (max-width: 768px) {
+            header h1 { 
+                font-size: 1.8rem; 
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .content h2 { 
+                font-size: 2.2rem; 
+            }
+            
+            .content p { 
+                font-size: 1.1rem; 
+            }
+            
+            .button-container { 
+                flex-direction: column; 
+                align-items: center; 
+            }
+            
+            .button-container button { 
+                width: 100%; 
+                max-width: 300px; 
+            }
+            
+            .review-text {
+                font-size: 1.1rem;
+                padding: 0 15px;
+            }
+            
+            .contact-form {
+                padding: 25px;
+            }
+            
+            .section {
+                padding: 80px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>StudySupport</h1>
+        <nav>
+            <ul>
+                <li><a href="#section3">Відгуки</a></li>
+                <li><a href="#section4">Зробити замовлення</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="fullpage">
+        <section class="section" id="section1">
+            <div class="content">
+                <h2 class="animate-element">Ти не один — ми тут, щоб допомогти!</h2>
+                <p class="animate-element">Допоможемо виконати завдання будь-якої складності — швидко, якісно та з турботою про результат. Оберіть, хто ви:</p>
+                <div class="button-container">
+                    <button class="animate-element" onclick="window.location.href='https://t.me/studysupport_ua_bot'">Я замовник</button>
+                    <button class="animate-element" onclick="window.location.href='https://t.me/studysupport_shop'">Я виконавець</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="section2">
+            <div class="content">
+                <h2 class="animate-element">Широкий спектр послуг для твого успіху</h2>
+                <p class="animate-element">Незалежно від рівня складності чи обсягу, StudySupport готовий прийняти твої виклики! Ми допоможемо з усім: від базових шкільних завдань до комплексних дипломних робіт, курсових проектів, рефератів та магістерських дисертацій. Наші спеціалісти забезпечать якісне виконання, дотримання термінів та індивідуальний підхід до кожного проєкту. Довір нам свої завдання і звільни час для важливішого!</p>
+            </div>
+        </section>
+
+        <section class="section" id="section3">
+            <div class="content">
+                <h2 class="animate-element">Що говорять наші клієнти</h2>
+                <div class="review-carousel">
+                    <div class="review-item active">
+                        <p class="review-text">"Коли я працював над магістерською з інженерії, виникало дуже багато складнощів з написанням, тому вирішив звернутись до спеціалістів. Зробили якісно і головне швидко. За два дні замовлення було в мене, моя магістерська пройшла антиплагіат на 97/100. Дякую, буду рекомендувати друзям!"</p>
+                        <p class="review-author">- Загайдачний Дмитро</p>
+                    </div>
+                    <div class="review-item">
+                        <p class="review-text">"Дуже вдячний команді StudySupport за допомогу з курсовою роботою з економіки. Викладач був вражений якістю аналізу та оформлення. Це мій не перший досвід співпраці, і завжди результат перевершує очікування!"</p>
+                        <p class="review-author">- Анна Власенко</p>
+                    </div>
+                    <div class="review-item">
+                        <p class="review-text">"Постійно звертаюсь сюди за допомогою з домашніми завданнями з математики та фізики. Завжди зрозуміло пояснюють і допомагають розібратися з матеріалом, а не просто дають відповіді. Дякую за терпіння!"</p>
+                        <p class="review-author">- Олег Ковальчук</p>
+                    </div>
+                </div>
+                <div class="carousel-nav">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="section4">
+            <div class="content">
+                <h2 class="animate-element">Потрібна допомога? Зверніться до нас!</h2>
+                <p class="animate-element">Маєте запитання або специфічну проблему? Заповніть форму, і наші менеджери зв'яжуться з вами.</p>
+                <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact" />
+                    <p style="display: none;">
+                        <label>Не заповнюйте це поле: <input name="bot-field" /></label>
+                    </p>
+                    <p>
+                        <label for="form-name" class="visually-hidden">Ваше ім'я</label>
+                        <input type="text" id="form-name" name="name" placeholder="Ваше ім'я" required>
+                    </p>
+                    <p>
+                        <label for="form-email" class="visually-hidden">Ваша пошта</label>
+                        <input type="email" id="form-email" name="email" placeholder="Ваша пошта" required>
+                    </p>
+                    <p>
+                        <label for="form-problem" class="visually-hidden">Опис проблеми</label>
+                        <textarea id="form-problem" name="problem-description" placeholder="Опис вашої проблеми" rows="5" required></textarea>
+                    </p>
+                    <button type="submit">Надіслати запит</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="section" id="section5">
+            <div class="content">
+                <h2 class="animate-element">Наші контакти та соціальні мережі</h2>
+                <p class="animate-element">Завжди на зв'язку, щоб допомогти тобі досягти академічних успіхів!</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:helperstudykpi@gmail.com">helperstudykpi@gmail.com</a></p>
+                    <p><i class="fab fa-telegram-plane"></i> Telegram (Замовник): <a href="https://t.me/studysupport_ua_bot" target="_blank">@studysupport_ua_bot</a></p>
+                    <p><i class="fab fa-telegram-plane"></i> Telegram (Виконавець): <a href="https://t.me/studysupport_shop" target="_blank">@studysupport_shop</a></p>
+                </div>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Viber"><i class="fab fa-viber"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Функція для перевірки видимості елементів
+            function checkVisibility() {
+                const sections = document.querySelectorAll('.section');
+                const header = document.querySelector('header');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (sectionTop < windowHeight * 0.85) {
+                        section.classList.add('visible');
+                        
+                        // Анімуємо елементи всередині секції
+                        const animateElements = section.querySelectorAll('.animate-element');
+                        animateElements.forEach((element, index) => {
+                            setTimeout(() => {
+                                element.classList.add('animated');
+                            }, index * 200);
+                        });
+                    }
+                });
+                
+                // Додаємо клас для хедера при прокрутці
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+            
+            // Перевіряємо видимість при завантаженні та прокрутці
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();
+            
+            // Карусель відгуків
+            const reviews = document.querySelectorAll('.review-item');
+            const dots = document.querySelectorAll('.dot');
+            let currentReviewIndex = 0;
+            let autoSlideInterval;
+            
+            function showReview(index) {
+                reviews.forEach(review => review.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                reviews[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentReviewIndex = index;
+            }
+            
+            function nextReview() {
+                let nextIndex = (currentReviewIndex + 1) % reviews.length;
+                showReview(nextIndex);
+            }
+            
+            // Додаємо обробники подій для крапок
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(autoSlideInterval);
+                    showReview(index);
+                    startAutoSlide();
+                });
+            });
+            
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextReview, 5000);
+            }
+            
+            // Запускаємо автоматичну зміну відгуків
+            startAutoSlide();
+            
+            // Додаємо обробник для форми
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Тут можна додати код для відправки форми
+                    alert('Дякуємо за ваше повідомлення! Ми зв\'яжемося з вами найближчим часом.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
