@@ -12,6 +12,8 @@
             --primary-hover-color: #3a56d4;
             --secondary-color: #f47c48;
             --secondary-hover-color: #f39c42;
+            --dark-bg: #222; /* Темний фон для секції послуг */
+            --dark-bg-card: #333; /* Фон для карток послуг */
             --dark-bg-overlay: rgba(28, 28, 28, 0.85);
             --light-text: #fff;
             --medium-text: #ddd;
@@ -30,7 +32,6 @@
             margin: 0;
             padding: 0;
             color: var(--dark-text);
-            /* Видалено градієнтний фон для body, оскільки перша секція тепер має своє зображення */
             overflow-x: hidden;
             position: relative;
         }
@@ -43,23 +44,22 @@
             background-repeat: no-repeat;
             background-attachment: fixed; /* Ефект паралаксу */
             position: relative;
-            isolation: isolate; /* Ізолює контекст накладання для псевдоелемента */
-            color: var(--light-text); /* Змінює колір тексту на білий для контрасту */
+            isolation: isolate;
+            color: var(--light-text);
         }
 
-        /* Затемнений оверлей для кращої читабельності тексту */
         #section1::before {
             content: '';
             position: absolute;
             inset: 0;
             background: var(--dark-bg-overlay);
-            z-index: -1; /* Поміщаємо під контентом */
+            z-index: -1;
         }
 
         #section1 .content h2,
         #section1 .content p {
-            color: var(--light-text); /* Забезпечуємо білий колір тексту в першій секції */
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Легка тінь для тексту */
+            color: var(--light-text);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
         /* --- Шапка сайту --- */
@@ -133,7 +133,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 100px 40px 80px;
+            padding: 140px 40px 80px; /* Збільшив верхній відступ */
             box-sizing: border-box;
             opacity: 0;
             transform: translateY(50px);
@@ -146,7 +146,7 @@
         }
 
         .content {
-            max-width: 900px;
+            max-width: 1100px; /* Збільшив ширину контенту для послуг */
             width: 100%;
         }
 
@@ -176,7 +176,59 @@
             color: #555;
             margin-bottom: 30px;
         }
-
+        
+        /* --- Секція Послуг (оновлена) --- */
+        #section2 {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+        #section2 .content h2, #section2 .content > p {
+            color: var(--light-text);
+        }
+        .services-grid {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: var(--dark-bg-card);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            text-align: left;
+        }
+        .service-item.reverse {
+            flex-direction: row-reverse;
+        }
+        .service-image, .service-text {
+            flex: 1;
+        }
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block; /* Забирає відступ під зображенням */
+        }
+        .service-text {
+            padding: 40px;
+        }
+        .service-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .service-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--medium-text);
+            margin-bottom: 0;
+        }
+        
         /* --- Кнопки --- */
         .button-container {
             display: flex;
@@ -667,6 +719,15 @@
                 width: 45px;
                 height: 45px;
             }
+            
+            /* Адаптивність для послуг */
+            .service-item, .service-item.reverse {
+                flex-direction: column;
+            }
+            .service-text {
+                padding: 25px;
+                text-align: center;
+            }
 
             /* Адаптивність для першої секції */
             #section1 {
@@ -706,10 +767,51 @@
         <section class="section" id="section2">
             <div class="content">
                 <h2 class="animate-element">Широкий спектр послуг для твого успіху</h2>
-                <p class="animate-element">Незалежно від рівня складності чи обсягу, StudySupport готовий прийняти твої виклики! Ми допоможемо з усім: від базових шкільних завдань до комплексних дипломних робіт, курсових проектів, рефератів та магістерських дисертацій. Наші спеціалісти забезпечать якісне виконання, дотримання термінів та індивідуальний підхід до кожного проєкту. Довір нам свої завдання і звільни час для важливішого!</p>
+                <p class="animate-element">Наша підтримка завжди поруч. Ми надаємо професійну допомогу з домашніми завданнями, есе, курсовими роботами, дисертаціями та дипломними роботами, гарантуючи якість, своєчасне виконання та індивідуальний підхід.</p>
+                
+                <div class="services-grid">
+                    <div class="service-item animate-element">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1456735180827-b2686c1de853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Курсові та есе">
+                        </div>
+                        <div class="service-text">
+                            <h3>Курсові та есе</h3>
+                            <p>Професійне написання та редагування курсових робіт та есе.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-item reverse animate-element">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Магістерські дисертації">
+                        </div>
+                        <div class="service-text">
+                            <h3>Магістерські дисертації</h3>
+                            <p>Комплексна допомога у написанні та дослідженні магістерських дисертацій.</p>
+                        </div>
+                    </div>
+
+                    <div class="service-item animate-element">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=932&q=80" alt="Допомога зі шкільними завданнями">
+                        </div>
+                        <div class="service-text">
+                            <h3>Допомога зі шкільними завданнями</h3>
+                            <p>Звертайтесь за допомогою з будь-якими шкільними завданнями з усіх предметів.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="service-item reverse animate-element">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1491841550275-5b462bf9f59f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Дипломні роботи">
+                        </div>
+                        <div class="service-text">
+                            <h3>Дипломні роботи</h3>
+                            <p>Допоможемо підготувати якісну дипломну роботу.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-
         <section class="section" id="section3">
             <div class="content">
                 <h2 class="animate-element">Що говорять наші клієнти</h2>
@@ -826,12 +928,10 @@
         </section>
     </main>
 
-    <!-- Кнопка "Нагору" -->
     <div class="scroll-to-top" id="scrollToTop">
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Модальне вікно -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
             <h3>Дякуємо!</h3>
