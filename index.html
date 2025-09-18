@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     /* =========================
-       Глобальні змінні теми
+       Змінні для теми
        ========================= */
     :root {
       --primary: #4a6cf7;
@@ -21,6 +21,10 @@
       --surface-muted: #f5f5f5;
       --overlay-dark: rgba(28, 28, 28, 0.85);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      --dark-bg: #121212;
+      --dark-text: #e0e0e0;
+      --dark-surface: #1e1e1e;
+      --dark-primary: #bb86fc;
     }
 
     html { scroll-behavior: smooth; }
@@ -30,10 +34,15 @@
       margin: 0;
       color: var(--text-dark);
       overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
+    body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text); }
+    body.dark-mode .section { background-color: var(--dark-surface); }
+    body.dark-mode header { background-color: var(--dark-surface); }
+
     /* =========================
-       Хедер / навігація
+       Header / навігація
        ========================= */
     header {
       position: fixed;
@@ -65,11 +74,17 @@
     }
     nav a:hover { background: var(--primary); color: var(--text-light); transform: translateY(-2px); }
 
-    /* Щоб якір не ховався під фіксованим хедером */
+    /* Для того, щоб якорі не ховались під фіксованим хедером */
     .section { scroll-margin-top: 110px; }
 
     /* =========================
-       Секції
+       Анімації при прокручуванні
+       ========================= */
+    .animate-element { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
+    .animate-element.animated { opacity: 1; transform: translateY(0); }
+
+    /* =========================
+       Стилі для секцій
        ========================= */
     main { width: 100%; }
     .section {
@@ -89,9 +104,12 @@
       content: ""; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
       width: 80px; height: 4px; background: var(--primary); border-radius: 2px;
     }
+
     .content p { font-size: 1.14rem; line-height: 1.7; color: var(--text-med); }
 
-    /* --- Section 1: Hero --- */
+    /* =========================
+       Секція 1: Герой
+       ========================= */
     #section1 {
       color: var(--text-light);
       background: url("https://kpi.ua/files/t-about-2023-12.jpg") center/cover no-repeat fixed;
@@ -113,116 +131,21 @@
     .btn-accent { background: var(--accent); }
     .btn-accent:hover { background: var(--accent-hover); }
 
-    /* --- Section 2: Services + бекграунд --- */
-    #section2 { background: url("sel_bg_texture.jpg") center/cover no-repeat; }
-    #section2::before { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,0.88); z-index: -1; }
+    /* =========================
+       Перемикання темної теми
+       ========================= */
+    .dark-mode-toggle { margin-top: 20px; padding: 10px 20px; background: var(--primary); color: var(--text-light); font-weight: bold; border: none; border-radius: 8px; cursor: pointer; }
+    .dark-mode-toggle:hover { background: var(--primary-hover); }
 
-    .image-gallery { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin: 30px 0 10px; }
-    .image-item { flex: 1; min-width: 250px; max-width: 300px; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.25s ease; background: var(--surface); }
-    .image-item:hover { transform: translateY(-5px); }
-    .image-item img { width: 100%; height: 180px; object-fit: cover; display: block; }
-
-    /* --- Section 3: Reviews --- */
-    #section3 { background: url("reviews_bg.jpg") center/cover no-repeat; }
-    #section3::before { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,0.9); z-index: -1; }
-
-    .review-carousel { position: relative; max-width: 860px; margin: 34px auto 0; min-height: 280px; }
-    .review-item {
-      position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;
-      padding: 38px; background: var(--surface); border-radius: 14px; box-shadow: var(--shadow);
-      opacity: 0; transform: translateX(50px) scale(0.96); transition: 0.45s ease;
+    /* =========================
+       Віджет чату
+       ========================= */
+    .chat-widget {
+      position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+      background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-light);
     }
-    .review-item.active { opacity: 1; transform: translateX(0) scale(1); z-index: 2; }
-
-    .review-text { font-style: italic; font-size: 1.15rem; line-height: 1.65; color: var(--text-med); position: relative; padding: 0 28px; }
-    .review-text::before, .review-text::after { content: '"'; position: absolute; font-size: 2.6rem; color: var(--primary); opacity: 0.28; }
-    .review-text::before { top: -16px; left: 0; }
-    .review-text::after { bottom: -32px; right: 0; }
-    .review-author { margin-top: 16px; font-weight: 700; color: var(--primary); }
-
-    .carousel-nav { margin-top: 24px; display: flex; gap: 10px; justify-content: center; }
-    .dot { width: 12px; height: 12px; border-radius: 50%; background: #cfcfcf; cursor: pointer; transition: 0.25s ease; }
-    .dot.active { background: var(--primary); transform: scale(1.28); }
-
-    .add-review-btn { margin-top: 18px; padding: 12px 20px; border-radius: 999px; border: 0; font-weight: 700; color: var(--text-light); background: var(--accent); box-shadow: var(--shadow); cursor: pointer; transition: 0.25s ease; }
-    .add-review-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
-
-    /* --- Section 4: Контактна форма --- */
-    #section4 { background: url("contact_bg.jpg") center/cover no-repeat; }
-    #section4::before { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,0.9); z-index: -1; }
-
-    .contact-form {
-      max-width: 640px; margin: 0 auto; background: var(--surface); box-shadow: var(--shadow);
-      padding: 34px; border-radius: 14px; display: flex; flex-direction: column; gap: 16px;
-      transform: translateY(16px); opacity: 0; transition: 0.6s ease;
-    }
-    .section.visible .contact-form { transform: translateY(0); opacity: 1; }
-    .contact-form input, .contact-form textarea { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #ddd; background: var(--surface-muted); color: var(--text-dark); font-size: 1rem; transition: 0.25s ease; }
-    .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(74,108,247,0.12); }
-    .contact-form button { padding: 14px; border-radius: 10px; border: 0; font-weight: 700; color: var(--text-light); background: var(--primary); cursor: pointer; transition: 0.25s ease; }
-    .contact-form button:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-
-    .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-
-    /* --- Section 5: Контакти+соцмережі --- */
-    #section5 { background: url("contacts_bg.jpg") center/cover no-repeat; }
-    #section5::before { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,0.9); z-index: -1; }
-
-    .contact-info p { font-size: 1.12rem; display: flex; gap: 10px; align-items: center; justify-content: center; margin: 12px 0; }
-    .contact-info a { color: var(--primary); text-decoration: none; font-weight: 600; }
-    .contact-info a:hover { color: var(--primary-hover); text-decoration: underline; }
-    .contact-info i { color: var(--primary); width: 24px; font-size: 1.15rem; }
-
-    .social-icons { margin-top: 26px; }
-    .social-icons a { display: inline-flex; width: 50px; height: 50px; border-radius: 50%; align-items: center; justify-content: center; font-size: 1.4rem; background: var(--surface); color: var(--primary); box-shadow: var(--shadow); transition: 0.25s ease; }
-    .social-icons a:hover { background: var(--primary); color: var(--text-light); transform: translateY(-4px); }
-
-    /* --- Section 6: FAQ --- */
-    #section6 { background: url("faq_bg.jpg") center/cover no-repeat; }
-    #section6::before { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,0.92); z-index: -1; }
-
-    .faq-container { max-width: 860px; margin: 30px auto 0; text-align: left; }
-    .faq-item { background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; margin-bottom: 14px; }
-    .faq-question { padding: 18px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.25s ease; }
-    .faq-question:hover { background: #f7f9ff; }
-    .faq-answer { padding: 0 18px; max-height: 0; overflow: hidden; transition: max-height 0.25s ease, padding 0.25s ease; color: var(--text-med); }
-    .faq-item.active .faq-question { background: #eef3ff; }
-    .faq-item.active .faq-question i { transform: rotate(180deg); }
-    .faq-item.active .faq-answer { max-height: 320px; padding: 0 18px 18px; }
-
-    /* --- Scroll to Top --- */
-    .scroll-to-top {
-      position: fixed; right: 26px; bottom: 26px; width: 50px; height: 50px; border-radius: 50%;
-      background: var(--primary); color: var(--text-light); display: flex; align-items: center; justify-content: center;
-      cursor: pointer; opacity: 0; visibility: hidden; transition: 0.25s ease; box-shadow: var(--shadow); z-index: 999;
-    }
-    .scroll-to-top.visible { opacity: 1; visibility: visible; }
-    .scroll-to-top:hover { background: var(--primary-hover); transform: translateY(-4px); }
-
-    /* --- Модалки --- */
-    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 2000; opacity: 0; visibility: hidden; transition: 0.25s ease; }
-    .modal-overlay.active { opacity: 1; visibility: visible; }
-    .modal { background: var(--surface); border-radius: 14px; padding: 32px; max-width: 520px; width: 92%; text-align: center; box-shadow: var(--shadow); transform: translateY(30px); transition: 0.3s ease; }
-    .modal-overlay.active .modal { transform: translateY(0); }
-    .modal h3 { color: var(--primary); margin: 0 0 10px; font-size: 1.6rem; }
-    .modal p { margin: 0 0 18px; }
-    .modal-close { padding: 12px 22px; border-radius: 10px; border: 0; font-weight: 700; color: var(--text-light); background: var(--primary); cursor: pointer; transition: 0.25s ease; }
-    .modal-close:hover { background: var(--primary-hover); transform: translateY(-2px); }
-
-    .review-form { text-align: left; display: flex; flex-direction: column; gap: 14px; }
-    .review-form input, .review-form textarea { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; background: var(--surface-muted); }
-    .review-form input:focus, .review-form textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(74,108,247,0.12); }
-
-    /* --- Адаптив --- */
-    @media (max-width: 768px) {
-      header h1 { font-size: 1.6rem; }
-      nav ul { flex-direction: column; gap: 8px; padding-top: 6px; }
-      .content h2 { font-size: 2rem; }
-      .content p { font-size: 1.05rem; }
-      .section { padding: 110px 20px 60px; }
-      .image-item { max-width: 100%; }
-      #section1 { background-attachment: scroll; }
-    }
+    .chat-widget:hover { background: var(--primary-hover); transform: translateY(-4px); }
   </style>
 </head>
 <body>
@@ -233,7 +156,6 @@
         <li><a href="#section1">Головна</a></li>
         <li><a href="#section2">Послуги</a></li>
         <li><a href="#section3">Відгуки</a></li>
-        <!-- "Замовлення" веде саме до першого екрану (якорь section1) -->
         <li><a href="#section1">Замовлення</a></li>
         <li><a href="#section5">Контакти</a></li>
         <li><a href="#section6">FAQ</a></li>
@@ -242,11 +164,11 @@
   </header>
 
   <main>
-    <!-- SECTION 1: Hero / перший екран -->
+    <!-- SECTION 1: Hero -->
     <section class="section" id="section1">
       <div class="content">
         <h2 class="animate-element">Ти не один — ми тут, щоб допомогти!</h2>
-        <p class="animate-element">Допоможемо виконати завдання будь-якої складності — швидко, якісно та з турботою про результат. Оберіть, хто ви:</p>
+        <p class="animate-element">Допоможемо виконати завдання будь-якої складності — швидко, якісно та з турботою про результат. Обери, хто ти:</p>
         <div class="button-row">
           <button class="btn animate-element" onclick="window.location.href='https://t.me/studysupport_ua_bot'">Я замовник</button>
           <button class="btn btn-accent animate-element" onclick="window.location.href='https://t.me/studysupport_shop'">Я виконавець</button>
@@ -254,259 +176,35 @@
       </div>
     </section>
 
-    <!-- SECTION 2: Services -->
+    <!-- SECTION 2: Послуги -->
     <section class="section" id="section2">
       <div class="content">
         <h2 class="animate-element">Широкий спектр послуг для твого успіху</h2>
         <div class="image-gallery">
-          <!-- Поставте файли селекшн21.jpg, селекшн22.jpg, селекшн23.jpg у цю саму теку -->
-          <div class="image-item"><img src="selekshn21.jpg" alt="Навчання з експертами" /></div>
-          <div class="image-item"><img src="selekshn22.jpg" alt="Індивідуальний підхід" /></div>
-          <div class="image-item"><img src="selekshn23.jpg" alt="Якісні результати" /></div>
+          <div class="image-item">
+            <img src="selekshn21.jpg" alt="Навчання з експертами">
+            <p>Навчання з експертами</p>
+          </div>
+          <div class="image-item">
+            <img src="selekshn22.jpg" alt="Індивідуальний підхід">
+            <p>Індивідуальний підхід</p>
+          </div>
+          <div class="image-item">
+            <img src="selekshn23.jpg" alt="Якісні результати">
+            <p>Якісні результати</p>
+          </div>
         </div>
         <p class="animate-element">Незалежно від рівня складності чи обсягу, StudySupport готовий прийняти твої виклики! Ми допоможемо з усім: від базових шкільних завдань до комплексних дипломних робіт, курсових проектів, рефератів та магістерських дисертацій. Наші спеціалісти забезпечать якісне виконання, дотримання термінів та індивідуальний підхід до кожного проєкту. Довір нам свої завдання і звільни час для важливішого!</p>
       </div>
     </section>
 
-    <!-- SECTION 3: Reviews -->
-    <section class="section" id="section3">
-      <div class="content">
-        <h2 class="animate-element">Що говорять наші клієнти</h2>
-        <div class="review-carousel">
-          <div class="review-item active">
-            <p class="review-text">"Коли я працював над магістерською з інженерії, виникало дуже багато складнощів з написанням, тому вирішив звернутись до спеціалістів. Зробили якісно і головне швидко. За два дні замовлення було в мене, моя магістерська пройшла антиплагіат на 97/100. Дякую, буду рекомендувати друзям!"</p>
-            <p class="review-author">- Загайдачний Дмитро</p>
-          </div>
-          <div class="review-item">
-            <p class="review-text">"Дуже вдячний команді StudySupport за допомогу з курсовою роботою з економіки. Викладач був вражений якістю аналізу та оформлення. Це мій не перший досвід співпраці, і завжди результат перевершує очікування!"</p>
-            <p class="review-author">- Анна Власенко</p>
-          </div>
-          <div class="review-item">
-            <p class="review-text">"Постійно звертаюсь сюди за допомогою з домашніми завданнями з математики та фізики. Завжди зрозуміло пояснюють і допомагають розібратися з матеріалом, а не просто дають відповіді. Дякую за терпіння!"</p>
-            <p class="review-author">- Олег Ковальчук</p>
-          </div>
-        </div>
-        <div class="carousel-nav">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-        <button class="add-review-btn" id="addReviewBtn">Залишити відгук</button>
-      </div>
-    </section>
+    <!-- Додати інші секції тут... -->
 
-    <!-- SECTION 4: Contact form -->
-    <section class="section" id="section4">
-      <div class="content">
-        <h2 class="animate-element">Потрібна допомога? Зверніться до нас!</h2>
-        <p class="animate-element">Маєте запитання або специфічну проблему? Заповніть форму, і наші менеджери зв'яжуться з вами.</p>
-        <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact" />
-          <p style="display:none;">
-            <label>Не заповнюйте це поле: <input name="bot-field" /></label>
-          </p>
-          <p>
-            <label for="form-name" class="visually-hidden">Ваше ім'я</label>
-            <input type="text" id="form-name" name="name" placeholder="Ваше ім'я" required />
-          </p>
-          <p>
-            <label for="form-email" class="visually-hidden">Ваша пошта</label>
-            <input type="email" id="form-email" name="email" placeholder="Ваша пошта" required />
-          </p>
-          <p>
-            <label for="form-problem" class="visually-hidden">Опис проблеми</label>
-            <textarea id="form-problem" name="problem-description" placeholder="Опис вашої проблеми" rows="5" required></textarea>
-          </p>
-          <button type="submit">Надіслати запит</button>
-        </form>
-      </div>
-    </section>
+    <!-- Кнопка для темної теми -->
+    <button class="dark-mode-toggle" onclick="document.body.classList.toggle('dark-mode')">Перемкнути на темну тему</button>
 
-    <!-- SECTION 5: Contacts + Socials (лише Telegram) -->
-    <section class="section" id="section5">
-      <div class="content">
-        <h2 class="animate-element">Наші контакти та соціальні мережі</h2>
-        <p class="animate-element">Завжди на зв'язку, щоб допомогти тобі досягти академічних успіхів!</p>
-        <div class="contact-info">
-          <p><i class="fas fa-envelope"></i>Email: <a href="mailto:helperstudykpi@gmail.com">helperstudykpi@gmail.com</a></p>
-          <p><i class="fab fa-telegram-plane"></i>Telegram (Замовник): <a href="https://t.me/studysupport_ua_bot" target="_blank" rel="noopener">@studysupport_ua_bot</a></p>
-          <p><i class="fab fa-telegram-plane"></i>Telegram (Виконавець): <a href="https://t.me/studysupport_shop" target="_blank" rel="noopener">@studysupport_shop</a></p>
-        </div>
-        <div class="social-icons">
-          <!-- Лишаємо тільки Telegram -->
-          <a href="https://t.me/studysupport_ua_bot" aria-label="Telegram" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 6: FAQ -->
-    <section class="section" id="section6">
-      <div class="content">
-        <h2 class="animate-element">Часті запитання (FAQ)</h2>
-        <div class="faq-container">
-          <div class="faq-item">
-            <div class="faq-question"><span>Які терміни виконання робіт?</span><i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer"><p>Терміни залежать від складності та обсягу роботи. Зазвичай це від 1 до 5 днів для стандартних завдань. Точний термін ми обговоримо після отримання деталей завдання.</p></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question"><span>Чи гарантуєте ви якість робіт?</span><i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer"><p>Так, ми надаємо гарантію на всі роботи. Якщо виникнуть зауваження від викладача, ми безкоштовно внесемо правки протягом гарантійного терміну.</p></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question"><span>Як відбувається оплата?</span><i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer"><p>Оплата відбувається після повного обговорення деталей завдання. Ми працюємо з різними способами оплати: банківський переказ, картка, PayPal тощо.</p></div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question"><span>Чи є у вас послуги термінового виконання?</span><i class="fas fa-chevron-down"></i></div>
-            <div class="faq-answer"><p>Так, ми надаємо послуги термінового виконання робіт. Вартість термінового замовлення обговорюється індивідуально.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Віджет чату -->
+    <div class="chat-widget"><i class="fas fa-comment-alt"></i></div>
   </main>
-
-  <!-- Scroll to top -->
-  <div class="scroll-to-top" id="scrollToTop" aria-label="Повернутися нагору"><i class="fas fa-arrow-up" aria-hidden="true"></i></div>
-
-  <!-- Success modal (contact form) -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <h3 id="modalTitle">Дякуємо!</h3>
-      <p>Ваше повідомлення успішно відправлено. Ми зв'яжемося з вами найближчим часом.</p>
-      <button class="modal-close" id="modalClose">Зрозуміло</button>
-    </div>
-  </div>
-
-  <!-- Review modal -->
-  <div class="modal-overlay" id="reviewModalOverlay">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle">
-      <h3 id="reviewModalTitle">Залишити відгук</h3>
-      <form class="review-form" id="reviewForm">
-        <p>
-          <label for="review-name">Ваше ім'я</label>
-          <input type="text" id="review-name" name="name" placeholder="Ваше ім'я" required />
-        </p>
-        <p>
-          <label for="review-text">Ваш відгук</label>
-          <textarea id="review-text" name="review" placeholder="Ваш відгук" rows="5" required></textarea>
-        </p>
-        <button type="submit" class="btn">Відправити відгук</button>
-      </form>
-      <button class="modal-close" id="reviewModalClose">Скасувати</button>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const header = document.querySelector('header');
-      const scrollToTop = document.getElementById('scrollToTop');
-
-      // Поява секцій + стан хедера + кнопка нагору
-      function onScroll() {
-        document.querySelectorAll('.section').forEach(sec => {
-          const rect = sec.getBoundingClientRect();
-          if (rect.top < window.innerHeight * 0.85) {
-            sec.classList.add('visible');
-            sec.querySelectorAll('.animate-element').forEach((el, i) => {
-              setTimeout(() => el.classList.add('animated'), i * 160);
-            });
-          }
-        });
-        header.classList.toggle('scrolled', window.scrollY > 50);
-        scrollToTop.classList.toggle('visible', window.scrollY > 500);
-      }
-      window.addEventListener('scroll', onScroll); onScroll();
-
-      // Кнопка «Нагору»
-      scrollToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-      // Карусель відгуків
-      const reviews = Array.from(document.querySelectorAll('.review-item'));
-      const dots = Array.from(document.querySelectorAll('.dot'));
-      let idx = 0; let timer;
-
-      function show(i) {
-        reviews.forEach(r => r.classList.remove('active'));
-        dots.forEach(d => d.classList.remove('active'));
-        reviews[i].classList.add('active');
-        dots[i].classList.add('active');
-        idx = i;
-      }
-      function next() { show((idx + 1) % reviews.length); }
-      function startAuto() { timer = setInterval(next, 5000); }
-      function stopAuto() { clearInterval(timer); }
-      dots.forEach((d, i) => d.addEventListener('click', () => { stopAuto(); show(i); startAuto(); }));
-      startAuto();
-
-      // FAQ акордеон
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.querySelector('.faq-question').addEventListener('click', () => {
-          document.querySelectorAll('.faq-item').forEach(x => { if (x !== item) x.classList.remove('active'); });
-          item.classList.toggle('active');
-        });
-      });
-
-      // Модалка контакту (Netlify friendly)
-      const contactForm = document.getElementById('contactForm');
-      const modalOverlay = document.getElementById('modalOverlay');
-      const modalClose = document.getElementById('modalClose');
-
-      if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const data = new FormData(contactForm);
-          try {
-            await fetch('/', { method: 'POST', body: data });
-            contactForm.reset();
-            modalOverlay.classList.add('active');
-          } catch (err) {
-            alert('Сталася помилка під час відправлення. Спробуйте ще раз.');
-          }
-        });
-      }
-      modalClose.addEventListener('click', () => modalOverlay.classList.remove('active'));
-      modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) modalOverlay.classList.remove('active'); });
-
-      // Додавання відгуку (кнопка + модалка) -> автоматично в карусель
-      const addReviewBtn = document.getElementById('addReviewBtn');
-      const reviewModalOverlay = document.getElementById('reviewModalOverlay');
-      const reviewModalClose = document.getElementById('reviewModalClose');
-      const reviewForm = document.getElementById('reviewForm');
-
-      addReviewBtn.addEventListener('click', () => reviewModalOverlay.classList.add('active'));
-      reviewModalClose.addEventListener('click', () => reviewModalOverlay.classList.remove('active'));
-      reviewModalOverlay.addEventListener('click', (e) => { if (e.target === reviewModalOverlay) reviewModalOverlay.classList.remove('active'); });
-
-      reviewForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('review-name').value.trim();
-        const text = document.getElementById('review-text').value.trim();
-        if (!name || !text) return;
-
-        // Створюємо новий слайд відгуку
-        const newItem = document.createElement('div');
-        newItem.className = 'review-item';
-        newItem.innerHTML = `<p class="review-text">"${text}"</p><p class="review-author">- ${name}</p>`;
-        document.querySelector('.review-carousel').appendChild(newItem);
-        reviews.push(newItem);
-
-        // Додаємо нову крапку
-        const newDot = document.createElement('span');
-        newDot.className = 'dot';
-        document.querySelector('.carousel-nav').appendChild(newDot);
-        dots.push(newDot);
-        newDot.addEventListener('click', () => { stopAuto(); show(reviews.length - 1); startAuto(); });
-
-        // Показуємо щойно доданий відгук як активний
-        stopAuto();
-        show(reviews.length - 1);
-        startAuto();
-
-        // Закриваємо модалку і чистимо форму
-        reviewForm.reset();
-        reviewModalOverlay.classList.remove('active');
-      });
-    });
-  </script>
 </body>
 </html>
