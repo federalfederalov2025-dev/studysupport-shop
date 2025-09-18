@@ -12,8 +12,6 @@
             --primary-hover-color: #3a56d4;
             --secondary-color: #f47c48;
             --secondary-hover-color: #f39c42;
-            --dark-bg: #222; /* Темний фон для секції послуг */
-            --dark-bg-card: #333; /* Фон для карток послуг */
             --dark-bg-overlay: rgba(28, 28, 28, 0.85);
             --light-text: #fff;
             --medium-text: #ddd;
@@ -44,22 +42,113 @@
             background-repeat: no-repeat;
             background-attachment: fixed; /* Ефект паралаксу */
             position: relative;
-            isolation: isolate;
-            color: var(--light-text);
+            isolation: isolate; /* Ізолює контекст накладання для псевдоелемента */
+            color: var(--light-text); /* Змінює колір тексту на білий для контрасту */
         }
 
+        /* Затемнений оверлей для кращої читабельності тексту */
         #section1::before {
             content: '';
             position: absolute;
             inset: 0;
             background: var(--dark-bg-overlay);
-            z-index: -1;
+            z-index: -1; /* Поміщаємо під контентом */
         }
 
         #section1 .content h2,
         #section1 .content p {
-            color: var(--light-text);
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            color: var(--light-text); /* Забезпечуємо білий колір тексту в першій секції */
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Легка тінь для тексту */
+        }
+
+        /* Фон для другої секції */
+        #section2 {
+            background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            isolation: isolate;
+        }
+
+        #section2::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+        }
+
+        /* Фон для третьої секції */
+        #section3 {
+            background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            isolation: isolate;
+        }
+
+        #section3::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: -1;
+        }
+
+        /* Фон для четвертої секції */
+        #section4 {
+            background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            isolation: isolate;
+        }
+
+        #section4::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.88);
+            z-index: -1;
+        }
+
+        /* Фон для п'ятої секції */
+        #section5 {
+            background-image: url('https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            isolation: isolate;
+        }
+
+        #section5::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.92);
+            z-index: -1;
+        }
+
+        /* Фон для шостої секції */
+        #section6 {
+            background-image: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            isolation: isolate;
+        }
+
+        #section6::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: -1;
         }
 
         /* --- Шапка сайту --- */
@@ -133,7 +222,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 140px 40px 80px; /* Збільшив верхній відступ */
+            padding: 100px 40px 80px;
             box-sizing: border-box;
             opacity: 0;
             transform: translateY(50px);
@@ -146,7 +235,7 @@
         }
 
         .content {
-            max-width: 1100px; /* Збільшив ширину контенту для послуг */
+            max-width: 900px;
             width: 100%;
         }
 
@@ -176,59 +265,7 @@
             color: #555;
             margin-bottom: 30px;
         }
-        
-        /* --- Секція Послуг (оновлена) --- */
-        #section2 {
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-        }
-        #section2 .content h2, #section2 .content > p {
-            color: var(--light-text);
-        }
-        .services-grid {
-            margin-top: 60px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-        .service-item {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            background-color: var(--dark-bg-card);
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            text-align: left;
-        }
-        .service-item.reverse {
-            flex-direction: row-reverse;
-        }
-        .service-image, .service-text {
-            flex: 1;
-        }
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block; /* Забирає відступ під зображенням */
-        }
-        .service-text {
-            padding: 40px;
-        }
-        .service-text h3 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-        .service-text p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--medium-text);
-            margin-bottom: 0;
-        }
-        
+
         /* --- Кнопки --- */
         .button-container {
             display: flex;
@@ -272,6 +309,27 @@
 
         .button-container button:hover:after {
             left: 100%;
+        }
+
+        /* Кнопка залишити відгук */
+        .leave-review-btn {
+            padding: 12px 25px;
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 50px;
+            color: var(--light-text);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .leave-review-btn:hover {
+            background-color: var(--secondary-hover-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         /* --- Секція відгуків --- */
@@ -643,6 +701,46 @@
             transform: translateY(-2px);
         }
 
+        /* Форма для відгуків */
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: var(--light-text);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 30px auto 0;
+        }
+        
+        .review-form input, .review-form textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: var(--dark-surface-field);
+            color: var(--dark-text);
+            box-sizing: border-box;
+        }
+        
+        .review-form button {
+            padding: 12px 25px;
+            background-color: var(--secondary-color);
+            border: none;
+            border-radius: 8px;
+            color: var(--light-text);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .review-form button:hover {
+            background-color: var(--secondary-hover-color);
+        }
+
         /* --- Анімації --- */
         @keyframes fadeInUp {
             from {
@@ -719,15 +817,6 @@
                 width: 45px;
                 height: 45px;
             }
-            
-            /* Адаптивність для послуг */
-            .service-item, .service-item.reverse {
-                flex-direction: column;
-            }
-            .service-text {
-                padding: 25px;
-                text-align: center;
-            }
 
             /* Адаптивність для першої секції */
             #section1 {
@@ -745,7 +834,7 @@
                 <li><a href="#section1">Головна</a></li>
                 <li><a href="#section2">Послуги</a></li>
                 <li><a href="#section3">Відгуки</a></li>
-                <li><a href="#section4">Замовлення</a></li>
+                <li><a href="#section1">Замовлення</a></li> <!-- Змінено посилання на першу секцію -->
                 <li><a href="#section5">Контакти</a></li>
                 <li><a href="#section6">FAQ</a></li>
             </ul>
@@ -767,51 +856,10 @@
         <section class="section" id="section2">
             <div class="content">
                 <h2 class="animate-element">Широкий спектр послуг для твого успіху</h2>
-                <p class="animate-element">Наша підтримка завжди поруч. Ми надаємо професійну допомогу з домашніми завданнями, есе, курсовими роботами, дисертаціями та дипломними роботами, гарантуючи якість, своєчасне виконання та індивідуальний підхід.</p>
-                
-                <div class="services-grid">
-                    <div class="service-item animate-element">
-                        <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1456735180827-b2686c1de853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Курсові та есе">
-                        </div>
-                        <div class="service-text">
-                            <h3>Курсові та есе</h3>
-                            <p>Професійне написання та редагування курсових робіт та есе.</p>
-                        </div>
-                    </div>
-
-                    <div class="service-item reverse animate-element">
-                        <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Магістерські дисертації">
-                        </div>
-                        <div class="service-text">
-                            <h3>Магістерські дисертації</h3>
-                            <p>Комплексна допомога у написанні та дослідженні магістерських дисертацій.</p>
-                        </div>
-                    </div>
-
-                    <div class="service-item animate-element">
-                        <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=932&q=80" alt="Допомога зі шкільними завданнями">
-                        </div>
-                        <div class="service-text">
-                            <h3>Допомога зі шкільними завданнями</h3>
-                            <p>Звертайтесь за допомогою з будь-якими шкільними завданнями з усіх предметів.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="service-item reverse animate-element">
-                        <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1491841550275-5b462bf9f59f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Дипломні роботи">
-                        </div>
-                        <div class="service-text">
-                            <h3>Дипломні роботи</h3>
-                            <p>Допоможемо підготувати якісну дипломну роботу.</p>
-                        </div>
-                    </div>
-                </div>
+                <p class="animate-element">Незалежно від рівня складності чи обсягу, StudySupport готовий прийняти твої виклики! Ми допоможемо з усім: від базових шкільних завдань до комплексних дипломних робіт, курсових проектів, рефератів та магістерських дисертацій. Наші спеціалісти забезпечать якісне виконання, дотримання термінів та індивідуальний підхід до кожного проєкту. Довір нам свої завдання і звільни час для важливішого!</p>
             </div>
         </section>
+
         <section class="section" id="section3">
             <div class="content">
                 <h2 class="animate-element">Що говорять наші клієнти</h2>
@@ -833,6 +881,15 @@
                     <span class="dot active"></span>
                     <span class="dot"></span>
                     <span class="dot"></span>
+                </div>
+                <button class="leave-review-btn" id="showReviewForm">Залишити відгук</button>
+                
+                <!-- Форма для відгуку (спочатку прихована) -->
+                <div class="review-form" id="reviewForm" style="display: none;">
+                    <h3>Залишити відгук</h3>
+                    <input type="text" id="review-name" placeholder="Ваше ім'я" required>
+                    <textarea id="review-text" placeholder="Ваш відгук" rows="5" required></textarea>
+                    <button type="button" id="submitReview">Надіслати відгук</button>
                 </div>
             </div>
         </section>
@@ -873,9 +930,8 @@
                     <p><i class="fab fa-telegram-plane"></i> Telegram (Виконавець): <a href="https://t.me/studysupport_shop" target="_blank">@studysupport_shop</a></p>
                 </div>
                 <div class="social-icons">
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Viber"><i class="fab fa-viber"></i></a>
+                    <!-- Залишаємо тільки Telegram -->
+                    <a href="https://t.me/studysupport_ua_bot" aria-label="Telegram" target="_blank"><i class="fab fa-telegram-plane"></i></a>
                 </div>
             </div>
         </section>
