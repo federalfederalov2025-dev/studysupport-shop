@@ -154,6 +154,38 @@
       color: var(--text-light);
       transform: translateY(-2px);
     }
+    
+    /* Стилі для першої секції (Hero) */
+    #section1 {
+        background-image: url('t-about-2023-12.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative; /* Необхідно для оверлею */
+    }
+
+    #section1::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(29, 29, 31, 0.65); /* Затемнений оверлей для кращої читабельності тексту */
+        z-index: 1;
+    }
+
+    #section1 .content {
+        position: relative; /* Щоб контент був над оверлеєм */
+        z-index: 2;
+    }
+
+    /* Робимо текст на першій секції білим і додаємо тінь, щоб його було видно */
+    #section1 .content h2,
+    #section1 .content p {
+        color: var(--text-light);
+        text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7); /* Тінь для тексту */
+    }
 
     /* Секції */
     .section {
@@ -220,7 +252,6 @@
         text-decoration: none;
         color: var(--text-dark);
     }
-
 
     /* Кнопки */
     .button-row {
