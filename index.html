@@ -7,6 +7,10 @@
   <meta name="description" content="StudySupport допоможе виконати завдання будь-якої складності. Швидко, якісно та з турботою про результат." />
   <meta name="keywords" content="StudySupport, послуги, допомога, навчання, відгуки" />
   <meta name="author" content="StudySupport Team" />
+  
+  <link rel="icon" href="logo.jpg" type="image/jpeg">
+  <link rel="apple-touch-icon" href="logo.jpg">
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
     /* Змінні для теми */
@@ -149,12 +153,18 @@
       transition: var(--transition);
     }
     
-    nav a:hover {
+    nav a:hover, nav a.active-link {
       background: var(--primary);
       color: var(--text-light);
       transform: translateY(-2px);
     }
     
+    body.dark-mode nav a.active-link {
+        background: var(--dark-primary);
+        color: var(--dark-bg);
+    }
+
+
     /* Стилі для першої секції (Hero) */
     #section1 {
         background-image: url('t-about-2023-12.jpg');
@@ -433,17 +443,12 @@
       align-items: center;
     }
     
-    .author-avatar {
+    .author-avatar-img {
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background-color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
       margin-right: 15px;
+      object-fit: cover;
     }
     
     .author-info h4 {
@@ -600,6 +605,37 @@
     body.dark-mode footer {
       background: #0a0a0a;
     }
+
+    /* Кнопка "Нагору" */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: var(--text-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+      transform: translateY(20px);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+        background-color: var(--primary-hover);
+    }
+
 
     /* Адаптивність */
     @media (max-width: 992px) {
@@ -810,7 +846,7 @@
               "Звернувся до StudySupport через складний курсовий проект. Зробили все якісно та вчасно. Тепер звертаюся постійно!"
             </div>
             <div class="testimonial-author">
-              <div class="author-avatar">А</div>
+              <img src="photo1.jpg" alt="Фото Андрія" class="author-avatar-img">
               <div class="author-info">
                 <h4>Андрій</h4>
                 <p>Студент, КНЕУ</p>
@@ -822,7 +858,7 @@
               "Дякую за чудово виконану дипломну роботу! Захистила на відмінно. Рецензент відзначив глибину дослідження."
             </div>
             <div class="testimonial-author">
-              <div class="author-avatar">М</div>
+              <img src="photo2.jpg" alt="Фото Марії" class="author-avatar-img">
               <div class="author-info">
                 <h4>Марія</h4>
                 <p>Випускниця, КПІ</p>
@@ -834,7 +870,7 @@
               "Замовляв кілька робіт, всі виконані на високому рівні. Ціную професійний підхід та дотримання дедлайнів."
             </div>
             <div class="testimonial-author">
-              <div class="author-avatar">С</div>
+              <img src="photo3.jpg" alt="Фото Сергія" class="author-avatar-img">
               <div class="author-info">
                 <h4>Сергій</h4>
                 <p>Студент, ЛНУ</p>
@@ -975,6 +1011,8 @@
     </div>
   </footer>
 
+  <a href="#section1" class="back-to-top" title="Нагору"><i class="fas fa-arrow-up"></i></a>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Мобільне меню
@@ -995,7 +1033,6 @@
       const themeToggle = document.querySelector('.theme-toggle');
       const themeIcon = themeToggle.querySelector('i');
       
-      // Перевірка збереженої теми
       if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
         themeIcon.classList.remove('fa-moon');
@@ -1018,8 +1055,7 @@
       
       // Анімації при скролі
       const animatedElements = document.querySelectorAll('.animate-element');
-      
-      const observer = new IntersectionObserver((entries) => {
+      const animationObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
@@ -1028,7 +1064,7 @@
       }, { threshold: 0.1 });
       
       animatedElements.forEach(element => {
-        observer.observe(element);
+        animationObserver.observe(element);
       });
       
       // FAQ акордеон
@@ -1043,14 +1079,49 @@
       });
       
       // Фіксация хедера при скролі
+      const header = document.querySelector('header');
       window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
         if (window.scrollY > 50) {
           header.classList.add('scrolled');
         } else {
           header.classList.remove('scrolled');
         }
       });
+
+      // --- НОВІ ФУНКЦІЇ ---
+
+      // 1. Кнопка "Повернутися нагору"
+      const backToTopButton = document.querySelector('.back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add('visible');
+        } else {
+          backToTopButton.classList.remove('visible');
+        }
+      });
+
+      // 2. Підсвічування активного пункту меню
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav a');
+
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              link.classList.remove('active-link');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active-link');
+              }
+            });
+          }
+        });
+      }, { rootMargin: '-30% 0px -70% 0px' }); // Тригер спрацює, коли секція буде в середній частині екрану
+
+      sections.forEach(section => {
+        navObserver.observe(section);
+      });
+
     });
   </script>
 </body>
