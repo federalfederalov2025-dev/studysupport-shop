@@ -80,6 +80,10 @@
     body.dark-mode nav a {
       color: var(--dark-text);
     }
+    
+    body.dark-mode a {
+        color: var(--dark-text);
+    }
 
     /* Загальні стилі для хедера */
     header {
@@ -151,7 +155,7 @@
       transform: translateY(-2px);
     }
 
-    /* Секції (ВИПРАВЛЕНО) */
+    /* Секції */
     .section {
       scroll-margin-top: 110px;
       min-height: 100vh;
@@ -211,6 +215,12 @@
       color: var(--text-med);
       margin-bottom: 20px;
     }
+    
+    .content a {
+        text-decoration: none;
+        color: var(--text-dark);
+    }
+
 
     /* Кнопки */
     .button-row {
@@ -420,57 +430,6 @@
       color: #ccc;
     }
 
-    /* Форма замовлення */
-    .order-form {
-      background: var(--surface);
-      border-radius: var(--border-radius);
-      padding: 30px;
-      box-shadow: var(--shadow);
-      max-width: 600px;
-      margin: 40px auto;
-      text-align: left;
-    }
-    
-    .form-group {
-      margin-bottom: 20px;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    
-    .form-control {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-    
-    .form-control:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.2);
-    }
-    
-    textarea.form-control {
-      min-height: 150px;
-      resize: vertical;
-    }
-    
-    body.dark-mode .order-form {
-      background: var(--dark-surface);
-    }
-    
-    body.dark-mode .form-control {
-      background-color: #2a2a2a;
-      border-color: #444;
-      color: var(--dark-text);
-    }
-
     /* Контакти */
     .contact-info {
       display: flex;
@@ -537,145 +496,6 @@
     
     .faq-item.active .faq-toggle {
       transform: rotate(180deg);
-    }
-
-    /* Віджет чату */
-    .chat-widget {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 60px;
-      height: 60px;
-      background: var(--primary);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--text-light);
-      box-shadow: var(--shadow);
-      z-index: 999;
-      transition: var(--transition);
-    }
-    
-    .chat-widget:hover {
-      background: var(--primary-hover);
-      transform: translateY(-4px);
-    }
-    
-    .chat-container {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      width: 350px;
-      height: 450px;
-      background: var(--surface);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-      z-index: 1000;
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    
-    body.dark-mode .chat-container {
-      background: var(--dark-surface);
-    }
-    
-    .chat-header {
-      background: var(--primary);
-      color: var(--text-light);
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .chat-close {
-      background: none;
-      border: none;
-      color: var(--text-light);
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    
-    .chat-messages {
-      flex: 1;
-      padding: 15px;
-      overflow-y: auto;
-    }
-    
-    .message {
-      margin-bottom: 15px;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .message-bot {
-      align-items: flex-start;
-    }
-    
-    .message-user {
-      align-items: flex-end;
-    }
-    
-    .message-text {
-      padding: 10px 15px;
-      border-radius: 18px;
-      max-width: 80%;
-      word-wrap: break-word;
-    }
-    
-    .message-bot .message-text {
-      background: var(--surface-muted);
-      border-top-left-radius: 5px;
-    }
-    
-    .message-user .message-text {
-      background: var(--primary);
-      color: var(--text-light);
-      border-top-right-radius: 5px;
-    }
-    
-    .chat-input {
-      display: flex;
-      padding: 10px;
-      border-top: 1px solid #eee;
-    }
-    
-    .chat-input input {
-      flex: 1;
-      padding: 10px 15px;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      margin-right: 10px;
-    }
-    
-    .chat-send {
-      background: var(--primary);
-      color: var(--text-light);
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-    }
-    
-    body.dark-mode .chat-input {
-      border-color: #444;
-    }
-    
-    body.dark-mode .chat-input input {
-      background: #2a2a2a;
-      border-color: #444;
-      color: var(--dark-text);
-    }
-    
-    body.dark-mode .message-bot .message-text {
-      background: #2a2a2a;
     }
 
     /* Футер */
@@ -829,11 +649,6 @@
       .services-grid {
         grid-template-columns: 1fr;
       }
-      
-      .chat-container {
-        width: 300px;
-        right: 20px;
-      }
     }
     
     @media (max-width: 480px) {
@@ -858,14 +673,9 @@
         width: 100%;
         max-width: 250px;
       }
-      
-      .chat-container {
-        width: calc(100% - 40px);
-        right: 20px;
-      }
     }
 
-    /* Анімації (ВИПРАВЛЕНО) */
+    /* Анімації */
     .animate-element {
       opacity: 0;
       transform: translateY(20px);
@@ -894,7 +704,6 @@
           <li><a href="#section1">Головна</a></li>
           <li><a href="#section2">Послуги</a></li>
           <li><a href="#section3">Відгуки</a></li>
-          <li><a href="#section4">Замовлення</a></li>
           <li><a href="#section5">Контакти</a></li>
           <li><a href="#section6">FAQ</a></li>
         </ul>
@@ -1003,54 +812,10 @@
           </div>
         </div>
         <div class="button-row">
-          <button class="btn animate-element">
+          <button class="btn animate-element" onclick="window.open('https://t.me/studysupport_shop', '_blank')">
             <i class="fas fa-pencil-alt"></i> Залишити відгук
           </button>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="section4">
-      <div class="content">
-        <h2 class="animate-element">Зробити замовлення</h2>
-        <p class="animate-element delay-1">Залиште свої контактні дані та опишіть завдання, і наш менеджер зв'яжеться з вами найближчим часом</p>
-        
-        <form class="order-form animate-element delay-2">
-          <div class="form-group">
-            <label for="name">Ім'я</label>
-            <input type="text" id="name" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="form-control" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Телефон</label>
-            <input type="tel" id="phone" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="task-type">Тип завдання</label>
-            <select id="task-type" class="form-control" required>
-              <option value="">Оберіть тип завдання</option>
-              <option value="coursework">Курсова робота</option>
-              <option value="diploma">Дипломна робота</option>
-              <option value="essay">Реферат</option>
-              <option value="test">Контрольна робота</option>
-              <option value="other">Інше</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="task-description">Опис завдання</label>
-            <textarea id="task-description" class="form-control" required></textarea>
-          </div>
-          <div class="form-group">
-            <label for="deadline">Термін виконання</label>
-            <input type="date" id="deadline" class="form-control" required>
-          </div>
-          <button type="submit" class="btn">
-            <i class="fas fa-paper-plane"></i> Надіслати заявку
-          </button>
-        </form>
       </div>
     </section>
 
@@ -1065,31 +830,25 @@
               <i class="fas fa-phone"></i>
             </div>
             <h3>Телефон</h3>
-            <p>+38 (099) 123-45-67</p>
-            <p>+38 (073) 765-43-21</p>
+            <p>(099) 337 3406</p>
+            <p>+380634850979</p>
           </div>
           <div class="contact-item animate-element delay-2">
             <div class="contact-icon">
               <i class="fas fa-envelope"></i>
             </div>
             <h3>Email</h3>
-            <p>info@studysupport.ua</p>
-            <p>orders@studysupport.ua</p>
+            <p><a href="mailto:ggkpigg@gmail.com">ggkpigg@gmail.com</a></p>
+            <p><a href="mailto:helperstudykpi@gmail.com">helperstudykpi@gmail.com</a></p>
           </div>
           <div class="contact-item animate-element delay-3">
             <div class="contact-icon">
               <i class="fab fa-telegram"></i>
             </div>
             <h3>Telegram</h3>
-            <p>@studysupport_ua</p>
-            <p>@studysupport_bot</p>
+            <p><a href="https://t.me/studysupport_shop" target="_blank" rel="noopener noreferrer">@studysupport_shop</a></p>
+            <p><a href="https://t.me/studysupport_ua_bot" target="_blank" rel="noopener noreferrer">@studysupport_ua_bot</a></p>
           </div>
-        </div>
-        
-        <div class="button-row">
-          <button class="btn btn-outline animate-element">
-            <i class="fas fa-map-marker-alt"></i> Ми на карті
-          </button>
         </div>
       </div>
     </section>
@@ -1162,7 +921,6 @@
           <li><a href="#section1">Головна</a></li>
           <li><a href="#section2">Послуги</a></li>
           <li><a href="#section3">Відгуки</a></li>
-          <li><a href="#section4">Замовлення</a></li>
           <li><a href="#section5">Контакти</a></li>
           <li><a href="#section6">FAQ</a></li>
         </ul>
@@ -1170,10 +928,10 @@
       
       <div class="footer-section">
         <h3>Контакти</h3>
-        <p>Email: info@studysupport.ua</p>
-        <p>Телефон: +38 (099) 123-45-67</p>
+        <p>Email: ggkpigg@gmail.com</p>
+        <p>Телефон: (099) 337 3406</p>
         <div class="social-links">
-          <a href="#"><i class="fab fa-telegram"></i></a>
+          <a href="https://t.me/studysupport_shop" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
           <a href="#"><i class="fab fa-viber"></i></a>
           <a href="#"><i class="fab fa-instagram"></i></a>
           <a href="#"><i class="fab fa-facebook"></i></a>
@@ -1185,30 +943,6 @@
       <p>&copy; 2025 StudySupport. Всі права захищені.</p>
     </div>
   </footer>
-
-  <div class="chat-widget">
-    <i class="fas fa-comment-alt"></i>
-  </div>
-  
-  <div class="chat-container">
-    <div class="chat-header">
-      <h3>Чат підтримки</h3>
-      <button class="chat-close">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    <div class="chat-messages">
-      <div class="message message-bot">
-        <div class="message-text">Вітаємо! Чим можемо допомогти?</div>
-      </div>
-    </div>
-    <div class="chat-input">
-      <input type="text" placeholder="Введіть ваше повідомлення...">
-      <button class="chat-send">
-        <i class="fas fa-paper-plane"></i>
-      </button>
-    </div>
-  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1266,60 +1000,6 @@
         observer.observe(element);
       });
       
-      // Віджет чату
-      const chatWidget = document.querySelector('.chat-widget');
-      const chatContainer = document.querySelector('.chat-container');
-      const chatClose = document.querySelector('.chat-close');
-      
-      chatWidget.addEventListener('click', function() {
-        chatContainer.style.display = 'flex';
-      });
-      
-      chatClose.addEventListener('click', function() {
-        chatContainer.style.display = 'none';
-      });
-      
-      // Відправка повідомлення в чаті (проста імітація)
-      const chatInput = document.querySelector('.chat-input input');
-      const chatSend = document.querySelector('.chat-send');
-      const chatMessages = document.querySelector('.chat-messages');
-      
-      function sendMessage() {
-        const messageText = chatInput.value.trim();
-        if (messageText === '') return;
-        
-        // Додати повідомлення користувача
-        const userMessage = document.createElement('div');
-        userMessage.classList.add('message', 'message-user');
-        userMessage.innerHTML = `<div class="message-text">${messageText}</div>`;
-        chatMessages.appendChild(userMessage);
-        
-        // Очистити поле вводу
-        chatInput.value = '';
-        
-        // Прокрутити до низу
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-        
-        // Імітація відповіді (через 1 секунду)
-        setTimeout(() => {
-          const botMessage = document.createElement('div');
-          botMessage.classList.add('message', 'message-bot');
-          botMessage.innerHTML = '<div class="message-text">Дякую за ваше повідомлення! Наш менеджер зв\'яжеться з вами найближчим часом.</div>';
-          chatMessages.appendChild(botMessage);
-          
-          // Прокрутити до низу
-          chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 1000);
-      }
-      
-      chatSend.addEventListener('click', sendMessage);
-      
-      chatInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          sendMessage();
-        }
-      });
-      
       // FAQ акордеон
       const faqItems = document.querySelectorAll('.faq-item');
       
@@ -1329,17 +1009,6 @@
         question.addEventListener('click', () => {
           item.classList.toggle('active');
         });
-      });
-      
-      // Обробка форми
-      const orderForm = document.querySelector('.order-form');
-      
-      orderForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Тут буде логіка відправки форми
-        alert('Дякуємо за ваше замовлення! Ми зв\'яжемося з вами найближчим часом.');
-        orderForm.reset();
       });
       
       // Фіксация хедера при скролі
