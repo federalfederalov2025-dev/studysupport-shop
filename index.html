@@ -73,7 +73,8 @@
     
     body.dark-mode .card,
     body.dark-mode .testimonial,
-    body.dark-mode .faq-item {
+    body.dark-mode .faq-item,
+    body.dark-mode .service-card {
       background-color: var(--dark-bg);
       color: var(--dark-text);
       border-color: #333;
@@ -178,7 +179,7 @@
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        position: relative; /* Необхідно для оверлею */
+        position: relative; 
     }
 
     #section1::before {
@@ -188,20 +189,19 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(29, 29, 31, 0.65); /* Затемнений оверлей для кращої читабельності тексту */
+        background-color: rgba(29, 29, 31, 0.65); 
         z-index: 1;
     }
 
     #section1 .content {
-        position: relative; /* Щоб контент був над оверлеєм */
+        position: relative; 
         z-index: 2;
     }
 
-    /* Робимо текст на першій секції білим і додаємо тінь, щоб його було видно */
     #section1 .content h2,
     #section1 .content p {
         color: var(--text-light);
-        text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7); /* Тінь для тексту */
+        text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7); 
     }
 
     /* Секції */
@@ -378,6 +378,7 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       margin: 40px 0;
+      justify-content: center;
     }
     
     .service-card {
@@ -412,10 +413,6 @@
     .service-card h3 {
       margin-bottom: 15px;
       color: var(--text-dark);
-    }
-    
-    body.dark-mode .service-card {
-      background: var(--dark-surface);
     }
     
     body.dark-mode .service-card h3 {
@@ -810,37 +807,27 @@
       <div class="content">
         <h2 class="animate-element">Широкий спектр послуг для твого успіху</h2>
         <div class="services-grid">
+          
           <div class="service-card animate-element delay-1">
-            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Навчання з експертами">
-            <div class="service-icon">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <h3>Навчання з експертами</h3>
-            <p>Індивідуальні заняття з досвідченими викладачами для ефективного засвоєння матеріалу</p>
-          </div>
-          <div class="service-card animate-element delay-2">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Індивідуальний підхід">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Індивідуальний підхід до кожного клієнта">
             <div class="service-icon">
               <i class="fas fa-user-cog"></i>
             </div>
             <h3>Індивідуальний підхід</h3>
             <p>Персональний підбір виконавця та програми навчання відповідно до ваших потреб</p>
           </div>
-          <div class="service-card animate-element delay-3">
-            <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Якісні результати">
+
+          <div class="service-card animate-element delay-2">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Акуратно виконана наукова робота на столі">
             <div class="service-icon">
               <i class="fas fa-medal"></i>
             </div>
-            <h3>Якісні результати</h3>
-            <p>Гарантія високої якості виконання робіт та їх відповідності вимогам</p>
+            <h3>Гарантія результату</h3>
+            <p>Ми дбаємо про кожну деталь, щоб ваша робота отримала найвищу оцінку. Ви можете бути спокійні за результат і впевнено йти на захист.</p>
           </div>
+
         </div>
         <p class="animate-element">Незалежно від рівня складності чи обсягу, StudySupport готовий прийняти твої виклики! Ми допоможемо з усім: від базових шкільних завдань до комплексних дипломних робіт, курсових проектів, рефератів та магістерських дисертацій. Наші спеціалісти забезпечать якісне виконання, дотримання термінів та індивідуальний підхід до кожного проєкту. Довір нам свої завдання і звільни час для важливішого!</p>
-        <div class="button-row">
-          <button class="btn btn-outline animate-element">
-            <i class="fas fa-list"></i> Детальніше про послуги
-          </button>
-        </div>
       </div>
     </section>
 
@@ -1123,7 +1110,7 @@
             });
           }
         });
-      }, { rootMargin: '-30% 0px -70% 0px' }); // Тригер спрацює, коли секція буде в середній частині екрану
+      }, { rootMargin: '-30% 0px -70% 0px' }); 
 
       sections.forEach(section => {
         navObserver.observe(section);
