@@ -1,1121 +1,1123 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>StudySupport — Допомога у навчанні для студентів</title>
-  <meta name="description" content="StudySupport допоможе виконати завдання будь-якої складності: від шкільних робіт до дипломних проектів. Швидко, якісно та з турботою про результат." />
-  <meta name="keywords" content="допомога студентам, курсова робота, дипломна робота, реферат, замовити роботу, StudySupport, навчання" />
-  <meta name="author" content="StudySupport Team" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>StudySupport — Допомога у навчанні для студентів</title>
+  <meta name="description" content="StudySupport допоможе виконати завдання будь-якої складності: від шкільних робіт до дипломних проектів. Швидко, якісно та з турботою про результат." />
+  <meta name="keywords" content="допомога студентам, курсова робота, дипломна робота, реферат, замовити роботу, StudySupport, навчання" />
+  <meta name="author" content="StudySupport Team" />
 
-  <meta name="theme-color" content="#4a6cf7">
+  <meta name="theme-color" content="#4a6cf7">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-  <style>
-    /* Змінні для теми */
-    :root {
-      --primary: #4a6cf7;
-      --primary-hover: #3a56d4;
-      --accent: #f47c48;
-      --accent-hover: #f39c42;
-      --text-dark: #333;
-      --text-med: #555;
-      --text-light: #fff;
-      --surface: #ffffff;
-      --surface-muted: #f5f5f5;
-      --overlay-dark: rgba(28, 28, 28, 0.85);
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-      --dark-bg: #121212;
-      --dark-text: #e0e0e0;
-      --dark-surface: #1e1e1e;
-      --dark-primary: #bb86fc;
-      --border-radius: 12px;
-      --transition: all 0.3s ease;
-    }
+  <style>
+    /* Змінні для теми */
+    :root {
+      --primary: #4a6cf7;
+      --primary-hover: #3a56d4;
+      --accent: #f47c48;
+      --accent-hover: #f39c42;
+      --text-dark: #333;
+      --text-med: #555;
+      --text-light: #fff;
+      --surface: #ffffff;
+      --surface-muted: #f5f5f5;
+      --overlay-dark: rgba(28, 28, 28, 0.85);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      --dark-bg: #121212;
+      --dark-text: #e0e0e0;
+      --dark-surface: #1e1e1e;
+      --dark-primary: #bb86fc;
+      --border-radius: 12px;
+      --transition: all 0.3s ease;
+    }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      color: var(--text-dark);
-      overflow-x: hidden;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      line-height: 1.6;
-    }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
+    }
 
-    body.dark-mode {
-      background-color: var(--dark-bg);
-      color: var(--dark-text);
-    }
-    
-    body.dark-mode .section {
-      background-color: var(--dark-surface);
-    }
-    
-    body.dark-mode header {
-      background-color: var(--dark-surface);
-    }
-    
-    body.dark-mode .card,
-    body.dark-mode .testimonial,
-    body.dark-mode .faq-item,
-    body.dark-mode .service-card {
-      background-color: var(--dark-bg);
-      color: var(--dark-text);
-      border-color: #333;
-    }
-    
-    body.dark-mode .content h2,
-    body.dark-mode .content h3 {
-      color: var(--dark-text);
-    }
-    
-    body.dark-mode .content p {
-      color: #ccc;
-    }
-    
-    body.dark-mode nav a {
-      color: var(--dark-text);
-    }
-    
-    body.dark-mode a {
-        color: var(--dark-text);
-    }
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    
+    body.dark-mode .section {
+      background-color: var(--dark-surface);
+    }
+    
+    body.dark-mode header {
+      background-color: var(--dark-surface);
+    }
+    
+    body.dark-mode .card,
+    body.dark-mode .testimonial,
+    body.dark-mode .faq-item,
+    body.dark-mode .service-card {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+      border-color: #333;
+    }
+    
+    body.dark-mode .content h2,
+    body.dark-mode .content h3 {
+      color: var(--dark-text);
+    }
+    
+    body.dark-mode .content p {
+      color: #ccc;
+    }
+    
+    body.dark-mode nav a {
+      color: var(--dark-text);
+    }
+    
+    body.dark-mode a {
+        color: var(--dark-text);
+    }
 
-    /* Загальні стилі для хедера */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(6px);
-      box-shadow: var(--shadow);
-      padding: 18px 5%;
-      transition: var(--transition);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    
-    header.scrolled {
-      padding: 12px 5%;
-    }
-    
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-    }
+    /* Загальні стилі для хедера */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(6px);
+      box-shadow: var(--shadow);
+      padding: 18px 5%;
+      transition: var(--transition);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    header.scrolled {
+      padding: 12px 5%;
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.9rem;
-      color: var(--primary);
-    }
-    
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--primary);
-    }
+    header h1 {
+      margin: 0;
+      font-size: 1.9rem;
+      color: var(--primary);
+    }
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary);
+    }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    nav a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 8px 14px;
-      border-radius: 8px;
-      transition: var(--transition);
-    }
-    
-    nav a:hover, nav a.active-link {
-      background: var(--primary);
-      color: var(--text-light);
-      transform: translateY(-2px);
-    }
-    
-    body.dark-mode nav a.active-link {
-        background: var(--dark-primary);
-        color: var(--dark-bg);
-    }
-
-
-    /* Стилі для першої секції (Hero) */
-    #section1 {
-        background-image: url('t-about-2023-12.jpg');
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        position: relative; 
-    }
-
-    #section1::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(29, 29, 31, 0.65); 
-        z-index: 1;
-    }
-
-    #section1 .content {
-        position: relative; 
-        z-index: 2;
-    }
-
-    #section1 .content h2,
-    #section1 .content p {
-        color: var(--text-light);
-        text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7); 
-    }
-
-    /* Секції */
-    .section {
-      scroll-margin-top: 110px;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 110px 5% 80px;
-      box-sizing: border-box;
-      position: relative;
-      isolation: isolate;
-    }
-    
-    .section:nth-child(even) {
-      background-color: var(--surface-muted);
-    }
-    
-    body.dark-mode .section:nth-child(even) {
-      background-color: #1a1a1a;
-    }
-
-    .content {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .content h2 {
-      font-size: 2.6rem;
-      margin: 0 0 16px;
-      color: var(--text-dark);
-      position: relative;
-      padding-bottom: 14px;
-    }
-    
-    .content h2::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 2px;
-    }
-    
-    .content h3 {
-      font-size: 1.8rem;
-      margin: 30px 0 15px;
-      color: var(--text-dark);
-    }
-
-    .content p {
-      font-size: 1.14rem;
-      line-height: 1.7;
-      color: var(--text-med);
-      margin-bottom: 20px;
-    }
-    
-    .content a {
-        text-decoration: none;
-        color: var(--text-dark);
-    }
-
-    /* Кнопки */
-    .button-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 22px;
-    }
-    
-    .btn {
-      padding: 14px 26px;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--text-light);
-      background: var(--primary);
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-    
-    .btn::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      left: -100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
-      transition: 0.5s;
-    }
-    
-    .btn:hover {
-      background: var(--primary-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-    }
-    
-    .btn:hover::after {
-      left: 100%;
-    }
-
-    .btn-accent {
-      background: var(--accent);
-    }
-    
-    .btn-accent:hover {
-      background: var(--accent-hover);
-    }
-    
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-    }
-    
-    body.dark-mode .btn-outline {
-      color: var(--dark-primary);
-      border-color: var(--dark-primary);
-    }
-    
-    .btn-outline:hover {
-      background: var(--primary);
-      color: var(--text-light);
-    }
-    
-    body.dark-mode .btn-outline:hover {
-      background: var(--dark-primary);
-      color: var(--dark-bg);
-    }
-
-    /* Перемикання темної теми */
-    .theme-toggle {
-      margin-left: 20px;
-      padding: 10px;
-      background: var(--primary);
-      color: var(--text-light);
-      font-weight: bold;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .theme-toggle:hover {
-      background: var(--primary-hover);
-    }
-    
-    .header-controls {
-      display: flex;
-      align-items: center;
-    }
-
-    /* Галерея послуг */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin: 40px 0;
-      justify-content: center;
-    }
-    
-    .service-card {
-      background: var(--surface);
-      border-radius: var(--border-radius);
-      padding: 25px;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .service-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: var(--border-radius);
-      margin-bottom: 20px;
-    }
-    
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    }
-    
-    .service-icon {
-      font-size: 3rem;
-      color: var(--primary);
-      margin-bottom: 20px;
-    }
-    
-    .service-card h3 {
-      margin-bottom: 15px;
-      color: var(--text-dark);
-    }
-    
-    body.dark-mode .service-card h3 {
-      color: var(--dark-text);
-    }
-
-    /* Відгуки */
-    .testimonials-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      margin: 40px 0;
-    }
-    
-    .testimonial {
-      background: var(--surface);
-      border-radius: var(--border-radius);
-      padding: 25px;
-      box-shadow: var(--shadow);
-      max-width: 350px;
-      text-align: left;
-    }
-    
-    .testimonial-text {
-      font-style: italic;
-      margin-bottom: 20px;
-    }
-    
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-    }
-    
-    .author-avatar-img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 15px;
-      object-fit: cover;
-    }
-    
-    .author-info h4 {
-      margin: 0;
-      font-size: 1.1rem;
-    }
-    
-    .author-info p {
-      margin: 5px 0 0;
-      font-size: 0.9rem;
-      color: var(--text-med);
-    }
-    
-    body.dark-mode .author-info p {
-      color: #ccc;
-    }
-
-    /* Контакти */
-    .contact-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      margin: 40px 0;
-    }
-    
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 250px;
-    }
-    
-    .contact-icon {
-      font-size: 2.5rem;
-      color: var(--primary);
-      margin-bottom: 15px;
-    }
-    
-    .contact-item h3 {
-      margin-bottom: 10px;
-    }
-
-    /* FAQ */
-    .faq-container {
-      max-width: 800px;
-      margin: 40px auto;
-    }
-    
-    .faq-item {
-      background: var(--surface);
-      border-radius: var(--border-radius);
-      margin-bottom: 15px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-    
-    .faq-question {
-      padding: 20px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    
-    .faq-answer {
-      padding: 0 20px 20px;
-      display: none;
-    }
-    
-    .faq-item.active .faq-answer {
-      display: block;
-    }
-    
-    .faq-toggle {
-      font-size: 1.2rem;
-      transition: var(--transition);
-    }
-    
-    .faq-item.active .faq-toggle {
-      transform: rotate(180deg);
-    }
-
-    /* Футер */
-    footer {
-      background: var(--text-dark);
-      color: var(--text-light);
-      padding: 40px 5%;
-      text-align: center;
-    }
-    
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 30px;
-    }
-    
-    .footer-section {
-      flex: 1;
-      min-width: 250px;
-    }
-    
-    .footer-section h3 {
-      margin-bottom: 20px;
-      color: var(--text-light);
-    }
-    
-    .footer-links {
-      list-style: none;
-    }
-    
-    .footer-links li {
-      margin-bottom: 10px;
-    }
-    
-    .footer-links a {
-      color: #ccc;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-    
-    .footer-links a:hover {
-      color: var(--text-light);
-    }
-    
-    .social-links {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      margin-top: 20px;
-    }
-    
-    .social-links a {
-      color: var(--text-light);
-      font-size: 1.5rem;
-      transition: var(--transition);
-    }
-    
-    .social-links a:hover {
-      color: var(--primary);
-    }
-    
-    .footer-bottom {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #444;
-    }
-    
-    body.dark-mode footer {
-      background: #0a0a0a;
-    }
-
-    /* Кнопка "Нагору" */
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background-color: var(--primary);
-      color: var(--text-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 998;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
-      transform: translateY(20px);
-    }
-    
-    .back-to-top.visible {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .back-to-top:hover {
-        background-color: var(--primary-hover);
-    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    
+    nav a:hover, nav a.active-link {
+      background: var(--primary);
+      color: var(--text-light);
+      transform: translateY(-2px);
+    }
+    
+    body.dark-mode nav a.active-link {
+        background: var(--dark-primary);
+        color: var(--dark-bg);
+    }
 
 
-    /* Адаптивність */
-    @media (max-width: 992px) {
-      .content h2 {
-        font-size: 2.2rem;
-      }
-      
-      nav ul {
-        gap: 10px;
-      }
-      
-      nav a {
-        font-size: 0.9rem;
-        padding: 6px 10px;
-      }
-    }
-    
-    @media (max-width: 768px) {
-      header {
-        padding: 15px 5%;
-      }
-      
-      .header-container {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      .menu-toggle {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 20px;
-      }
-      
-      nav {
-        width: 100%;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
-      
-      nav.active {
-        max-height: 300px;
-      }
-      
-      nav ul {
-        flex-direction: column;
-        padding: 20px 0;
-        gap: 0;
-      }
-      
-      nav a {
-        display: block;
-        padding: 12px 0;
-        border-radius: 0;
-        text-align: center;
-      }
-      
-      .header-controls {
-        width: 100;
-        justify-content: center;
-        margin-top: 15px;
-      }
-      
-      .section {
-        padding: 100px 5% 60px;
-      }
-      
-      .content h2 {
-        font-size: 2rem;
-      }
-      
-      .btn {
-        padding: 12px 20px;
-        font-size: 1rem;
-      }
-      
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.6rem;
-      }
-      
-      .content h2 {
-        font-size: 1.8rem;
-      }
-      
-      .content p {
-        font-size: 1rem;
-      }
-      
-      .button-row {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .btn {
-        width: 100%;
-        max-width: 250px;
-      }
-    }
+    /* Стилі для першої секції (Hero) */
+    #section1 {
+        background-image: url('t-about-2023-12.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        position: relative; 
+    }
 
-    /* Анімації */
-    .animate-element {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    
-    .animate-element.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .delay-1 { transition-delay: 0.2s; }
-    .delay-2 { transition-delay: 0.4s; }
-    .delay-3 { transition-delay: 0.6s; }
-  </style>
+    #section1::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(29, 29, 31, 0.65); 
+        z-index: 1;
+    }
+
+    #section1 .content {
+        position: relative; 
+        z-index: 2;
+    }
+
+    #section1 .content h2,
+    #section1 .content p {
+        color: var(--text-light);
+        text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.7); 
+    }
+
+    /* Секції */
+    .section {
+      scroll-margin-top: 110px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 110px 5% 80px;
+      box-sizing: border-box;
+      position: relative;
+      isolation: isolate;
+    }
+    
+    .section:nth-child(even) {
+      background-color: var(--surface-muted);
+    }
+    
+    body.dark-mode .section:nth-child(even) {
+      background-color: #1a1a1a;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .content h2 {
+      font-size: 2.6rem;
+      margin: 0 0 16px;
+      color: var(--text-dark);
+      position: relative;
+      padding-bottom: 14px;
+    }
+    
+    .content h2::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .content h3 {
+      font-size: 1.8rem;
+      margin: 30px 0 15px;
+      color: var(--text-dark);
+    }
+
+    .content p {
+      font-size: 1.14rem;
+      line-height: 1.7;
+      color: var(--text-med);
+      margin-bottom: 20px;
+    }
+    
+    .content a {
+        text-decoration: none;
+        color: var(--text-dark);
+    }
+
+    /* Кнопки */
+    .button-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 22px;
+    }
+    
+    .btn {
+      padding: 14px 26px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-light);
+      background: var(--primary);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      left: -100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+    }
+    
+    .btn:hover::after {
+      left: 100%;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+    }
+    
+    .btn-accent:hover {
+      background: var(--accent-hover);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    body.dark-mode .btn-outline {
+      color: var(--dark-primary);
+      border-color: var(--dark-primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--text-light);
+    }
+    
+    body.dark-mode .btn-outline:hover {
+      background: var(--dark-primary);
+      color: var(--dark-bg);
+    }
+
+    /* Перемикання темної теми */
+    .theme-toggle {
+      margin-left: 20px;
+      padding: 10px;
+      background: var(--primary);
+      color: var(--text-light);
+      font-weight: bold;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .theme-toggle:hover {
+      background: var(--primary-hover);
+    }
+    
+    .header-controls {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Галерея послуг */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+      justify-content: center;
+    }
+    
+    .service-card {
+      background: var(--surface);
+      border-radius: var(--border-radius);
+      padding: 25px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      margin-bottom: 20px;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+    
+    .service-icon {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .service-card h3 {
+      margin-bottom: 15px;
+      color: var(--text-dark);
+    }
+    
+    body.dark-mode .service-card h3 {
+      color: var(--dark-text);
+    }
+
+    /* Відгуки */
+    .testimonials-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+    
+    .testimonial {
+      background: var(--surface);
+      border-radius: var(--border-radius);
+      padding: 25px;
+      box-shadow: var(--shadow);
+      max-width: 350px;
+      text-align: left;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .author-avatar-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+      object-fit: cover;
+    }
+    
+    .author-info h4 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    
+    .author-info p {
+      margin: 5px 0 0;
+      font-size: 0.9rem;
+      color: var(--text-med);
+    }
+    
+    body.dark-mode .author-info p {
+      color: #ccc;
+    }
+
+    /* Контакти */
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin: 40px 0;
+    }
+    
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 250px;
+    }
+    
+    .contact-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .contact-item h3 {
+      margin-bottom: 10px;
+    }
+
+    /* FAQ */
+    .faq-container {
+      max-width: 800px;
+      margin: 40px auto;
+    }
+    
+    .faq-item {
+      background: var(--surface);
+      border-radius: var(--border-radius);
+      margin-bottom: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    
+    .faq-question {
+      padding: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .faq-answer {
+      padding: 0 20px 20px;
+      display: none;
+    }
+    
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    
+    .faq-toggle {
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    
+    .faq-item.active .faq-toggle {
+      transform: rotate(180deg);
+    }
+
+    /* Футер */
+    footer {
+      background: var(--text-dark);
+      color: var(--text-light);
+      padding: 40px 5%;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-section h3 {
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #ccc;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--text-light);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      color: var(--text-light);
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    
+    .footer-bottom {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+    }
+    
+    body.dark-mode footer {
+      background: #0a0a0a;
+    }
+
+    /* Кнопка "Нагору" */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: var(--text-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+      transform: translateY(20px);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+        background-color: var(--primary-hover);
+    }
+
+
+    /* Адаптивність */
+    @media (max-width: 992px) {
+      .content h2 {
+        font-size: 2.2rem;
+      }
+      
+      nav ul {
+        gap: 10px;
+      }
+      
+      nav a {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 5%;
+      }
+      
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+      
+      nav {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+      
+      nav.active {
+        max-height: 300px;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 0;
+      }
+      
+      nav a {
+        display: block;
+        padding: 12px 0;
+        border-radius: 0;
+        text-align: center;
+      }
+      
+      .header-controls {
+        width: 100;
+        justify-content: center;
+        margin-top: 15px;
+      }
+      
+      .section {
+        padding: 100px 5% 60px;
+      }
+      
+      .content h2 {
+        font-size: 2rem;
+      }
+      
+      .btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      
+      .content h2 {
+        font-size: 1.8rem;
+      }
+      
+      .content p {
+        font-size: 1rem;
+      }
+      
+      .button-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+
+    /* Анімації */
+    .animate-element {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .animate-element.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .delay-1 { transition-delay: 0.2s; }
+    .delay-2 { transition-delay: 0.4s; }
+    .delay-3 { transition-delay: 0.6s; }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <h1>StudySupport</h1>
-      <button class="menu-toggle">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav>
-        <ul>
-          <li><a href="#section1">Головна</a></li>
-          <li><a href="#section2">Послуги</a></li>
-          <li><a href="#section3">Відгуки</a></li>
-          <li><a href="#section5">Контакти</a></li>
-          <li><a href="#section6">FAQ</a></li>
-        </ul>
-      </nav>
-      <div class="header-controls">
-        <button class="theme-toggle" aria-label="Перемкнути тему">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
-    </div>
-  </header>
+  <header>
+    <div class="header-container">
+      <h1>StudySupport</h1>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul>
+          <li><a href="#section1">Головна</a></li>
+          <li><a href="#section2">Послуги</a></li>
+          <li><a href="#section3">Відгуки</a></li>
+          <li><a href="#section5">Контакти</a></li>
+          <li><a href="#section6">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-controls">
+        <button class="theme-toggle" aria-label="Перемкнути тему">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
 
-  <main>
-    <section class="section" id="section1">
-      <div class="content">
-        <h2 class="animate-element">Ти не один — ми тут, щоб допомогти!</h2>
-        <p class="animate-element delay-1">Допоможемо виконати завдання будь-якої складності — швидко, якісно та з турботою про результат. Обери, хто ти:</p>
-        <div class="button-row">
-          <button class="btn animate-element delay-2" onclick="window.location.href='https://t.me/studysupport_ua_bot'">
-            <i class="fas fa-user-check"></i> Я замовник
-          </button>
-          <button class="btn btn-accent animate-element delay-2" onclick="window.location.href='https://t.me/studysupport_shop'">
-            <i class="fas fa-user-tie"></i> Я виконавець
-          </button>
-        </div>
-      </div>
-    </section>
+  <main>
+    <section class="section" id="section1">
+      <div class="content">
+        <h2 class="animate-element">Ти не один — ми тут, щоб допомогти!</h2>
+        <p class="animate-element delay-1">Допоможемо виконати завдання будь-якої складності — швидко, якісно та з турботою про результат. Обери, хто ти:</p>
+        <div class="button-row">
+          <button class="btn animate-element delay-2" onclick="window.location.href='https://t.me/studysupport_ua_bot'">
+            <i class="fas fa-user-check"></i> Я замовник
+          </button>
+          <button class="btn btn-accent animate-element delay-2" onclick="window.location.href='https://t.me/studysupport_shop'">
+            <i class="fas fa-user-tie"></i> Я виконавець
+          </button>
+        </div>
+      </div>
+    </section>
 
-    <section class="section" id="section2">
-      <div class="content">
-        <h2 class="animate-element">Широкий спектр послуг для твого успіху</h2>
-        <div class="services-grid">
-          
-          <div class="service-card animate-element delay-1">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Індивідуальний підхід до кожного клієнта">
-            <div class="service-icon">
-              <i class="fas fa-user-cog"></i>
-            </div>
-            <h3>Індивідуальний підхід</h3>
-            <p>Персональний підбір виконавця та програми навчання відповідно до ваших потреб</p>
-          </div>
+    <section class="section" id="section2">
+      <div class="content">
+        <h2 class="animate-element">Широкий спектр послуг для твого успіху</h2>
+        <div class="services-grid">
+          
+          <div class="service-card animate-element delay-1">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Індивідуальний підхід до кожного клієнта">
+            <div class="service-icon">
+              <i class="fas fa-user-cog"></i>
+            </div>
+            <h3>Індивідуальний підхід</h3>
+            <p>Персональний підбір виконавця та програми навчання відповідно до ваших потреб</p>
+          </div>
 
-          <div class="service-card animate-element delay-2">
-            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Акуратно виконана наукова робота на столі">
-            <div class="service-icon">
-              <i class="fas fa-medal"></i>
-            </div>
-            <h3>Гарантія результату</h3>
-            <p>Ми дбаємо про кожну деталь, щоб ваша робота отримала найвищу оцінку. Ви можете бути спокійні за результат і впевнено йти на захист.</p>
-          </div>
+          <div class="service-card animate-element delay-2">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Акуратно виконана наукова робота на столі">
+            <div class="service-icon">
+              <i class="fas fa-medal"></i>
+            </div>
+            <h3>Гарантія результату</h3>
+            <p>Ми дбаємо про кожну деталь, щоб ваша робота отримала найвищу оцінку. Ви можете бути спокійні за результат і впевнено йти на захист.</p>
+          </div>
 
-        </div>
-        <p class="animate-element">Незалежно від рівня складності чи обсягу, StudySupport готовий прийняти твої виклики! Ми допоможемо з усім: від базових шкільних завдань до комплексних дипломних робіт, курсових проектів, рефератів та магістерських дисертацій. Наші спеціалісти забезпечать якісне виконання, дотримання термінів та індивідуальний підхід до кожного проєкту. Довір нам свої завдання і звільни час для важливішого!</p>
-      </div>
-    </section>
+        </div>
+        <p class="animate-element">Незалежно від рівня складності чи обсягу, StudySupport готовий прийняти твої виклики! Ми допоможемо з усім: від базових шкільних завдань до комплексних дипломних робіт, курсових проектів, рефератів та магістерських дисертацій. Наші спеціалісти забезпечать якісне виконання, дотримання термінів та індивідуальний підхід до кожного проєкту. Довір нам свої завдання і звільни час для важливішого!</p>
+      </div>
+    </section>
 
-    <section class="section" id="section3">
-      <div class="content">
-        <h2 class="animate-element">Що кажуть наші клієнти</h2>
-        <div class="testimonials-container">
-          <div class="testimonial animate-element delay-1">
-            <div class="testimonial-text">
-              "Звернувся до StudySupport через складний курсовий проект. Зробили все якісно та вчасно. Тепер звертаюся постійно!"
-            </div>
-            <div class="testimonial-author">
-              <img src="photo1.jpg" alt="Фото Андрія" class="author-avatar-img">
-              <div class="author-info">
-                <h4>Андрій</h4>
-                <p>Студент, КНЕУ</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial animate-element delay-2">
-            <div class="testimonial-text">
-              "Дякую за чудово виконану дипломну роботу! Захистила на відмінно. Рецензент відзначив глибину дослідження."
-            </div>
-            <div class="testimonial-author">
-              <img src="photo3.jpg" alt="Фото Марії" class="author-avatar-img">
-              <div class="author-info">
-                <h4>Марія</h4>
-                <p>Випускниця, КПІ</p>
-              </div>
-            </div>
-          </div>
-          <div class="testimonial animate-element delay-3">
-            <div class="testimonial-text">
-              "Замовляв кілька робіт, всі виконані на високому рівні. Ціную професійний підхід та дотримання дедлайнів."
-            </div>
-            <div class="testimonial-author">
-              <img src="photo2.jpg" alt="Фото Сергія" class="author-avatar-img">
-              <div class="author-info">
-                <h4>Сергій</h4>
-                <p>Студент, ЛНУ</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="button-row">
-          <button class="btn animate-element" onclick="window.open('https://t.me/studysupport_shop', '_blank')">
-            <i class="fas fa-pencil-alt"></i> Залишити відгук
-          </button>
-        </div>
-      </div>
-    </section>
+    <section class="section" id="section3">
+      <div class="content">
+        <h2 class="animate-element">Що кажуть наші клієнти</h2>
+        <div class="testimonials-container">
+          <div class="testimonial animate-element delay-1">
+            <div class="testimonial-text">
+              "Звернувся до StudySupport через складний курсовий проект. Зробили все якісно та вчасно. Тепер звертаюся постійно!"
+            </div>
+            <div class="testimonial-author">
+              <img src="photo1.jpg" alt="Фото Андрія" class="author-avatar-img">
+              <div class="author-info">
+                <h4>Андрій</h4>
+                <p>Студент, КНЕУ</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial animate-element delay-2">
+            <div class="testimonial-text">
+              "Дякую за чудово виконану дипломну роботу! Захистила на відмінно. Рецензент відзначив глибину дослідження."
+            </div>
+            <div class="testimonial-author">
+              <img src="photo3.jpg" alt="Фото Марії" class="author-avatar-img">
+              <div class="author-info">
+                <h4>Марія</h4>
+                <p>Випускниця, КПІ</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial animate-element delay-3">
+            <div class="testimonial-text">
+              "Замовляв кілька робіт, всі виконані на високому рівні. Ціную професійний підхід та дотримання дедлайнів."
+            </div>
+            <div class="testimonial-author">
+              <img src="photo2.jpg" alt="Фото Сергія" class="author-avatar-img">
+              <div class="author-info">
+                <h4>Сергій</h4>
+                <p>Студент, ЛНУ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-row">
+          <button class="btn animate-element" onclick="window.open('https://t.me/studysupport_shop', '_blank')">
+            <i class="fas fa-pencil-alt"></i> Залишити відгук
+          </button>
+        </div>
+      </div>
+    </section>
 
-    <section class="section" id="section5">
-      <div class="content">
-        <h2 class="animate-element">Контакти</h2>
-        <p class="animate-element delay-1">Зв'яжіться з нами зручним для вас способом</p>
-        
-        <div class="contact-info">
-          <div class="contact-item animate-element delay-1">
-            <div class="contact-icon">
-              <i class="fas fa-phone"></i>
-            </div>
-            <h3>Телефон</h3>
-            <p>(099) 337 3406</p>
-            <p>+380634850979</p>
-          </div>
-          <div class="contact-item animate-element delay-2">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <h3>Email</h3>
-            <p><a href="mailto:ggkpigg@gmail.com">ggkpigg@gmail.com</a></p>
-            <p><a href="mailto:helperstudykpi@gmail.com">helperstudykpi@gmail.com</a></p>
-          </div>
-          <div class="contact-item animate-element delay-3">
-            <div class="contact-icon">
-              <i class="fab fa-telegram"></i>
-            </div>
-            <h3>Telegram</h3>
-            <p><a href="https://t.me/studysupport_shop" target="_blank" rel="noopener noreferrer">@studysupport_shop</a></p>
-            <p><a href="https://t.me/studysupport_ua_bot" target="_blank" rel="noopener noreferrer">@studysupport_ua_bot</a></p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <section class="section" id="section5">
+      <div class="content">
+        <h2 class="animate-element">Контакти</h2>
+        <p class="animate-element delay-1">Зв'яжіться з нами зручним для вас способом</p>
+        
+        <div class="contact-info">
+          <div class="contact-item animate-element delay-1">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h3>Телефон</h3>
+            <p>(099) 337 3406</p>
+            <p>+380634850979</p>
+          </div>
+          <div class="contact-item animate-element delay-2">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email</h3>
+            <p><a href="mailto:ggkpigg@gmail.com">ggkpigg@gmail.com</a></p>
+            <p><a href="mailto:helperstudykpi@gmail.com">helperstudykpi@gmail.com</a></p>
+          </div>
+          <div class="contact-item animate-element delay-3">
+            <div class="contact-icon">
+              <i class="fab fa-telegram"></i>
+            </div>
+            <h3>Telegram</h3>
+            <p><a href="https://t.me/studysupport_shop" target="_blank" rel="noopener noreferrer">@studysupport_shop</a></p>
+            <p><a href="https://t.me/studysupport_ua_bot" target="_blank" rel="noopener noreferrer">@studysupport_ua_bot</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <section class="section" id="section6">
-      <div class="content">
-        <h2 class="animate-element">Поширені запитання</h2>
-        
-        <div class="faq-container">
-          <div class="faq-item animate-element delay-1">
-            <div class="faq-question">
-              <span>Як швидко ви можете виконати завдання?</span>
-              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="faq-answer">
-              <p>Термін виконання залежить від складності та обсягу роботи. Зазвичай прості завдання виконуються за 1-3 дні, складніші (дипломні, курсові) - від 5 днів. Точний термін обговоримо після ознайомлення із завданням.</p>
-            </div>
-          </div>
-          
-          <div class="faq-item animate-element delay-2">
-            <div class="faq-question">
-              <span>Чи гарантуєте ви якість робіт?</span>
-              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="faq-answer">
-              <p>Так, ми надаємо гарантію якості. У разі необхідності вносимо безкоштовні правки протягом 30 днів після отримання роботи. Також надаємо консультації щодо захисту.</p>
-            </div>
-          </div>
-          
-          <div class="faq-item animate-element delay-3">
-            <div class="faq-question">
-              <span>Як відбувається оплата?</span>
-              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="faq-answer">
-              <p>Оплата відбувається одразу в повному обсязі.</p>
-            </div>
-          </div>
-          
-          <div class="faq-item animate-element">
-            <div class="faq-question">
-              <span>Чи є у вас послуги доопрацювання чи виправлення готових робіт?</span>
-              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
-            </div>
-            <div class="faq-answer">
-              <p>Так, ми надаємо послуги доопрацювання та виправлення існуючих робіт. Наші фахівці проаналізують роботу, виправлять помилки та доповнять її згідно з вашими вимогами.</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="button-row">
-          <a href="https://t.me/studysupport_shop" target="_blank" rel="noopener noreferrer" class="btn animate-element">
-            <i class="fas fa-question-circle"></i> Задати питання
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
+    <section class="section" id="section6">
+      <div class="content">
+        <h2 class="animate-element">Поширені запитання</h2>
+        
+        <div class="faq-container">
+          <div class="faq-item animate-element delay-1">
+            <div class="faq-question">
+              <span>Як швидко ви можете виконати завдання?</span>
+              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Термін виконання залежить від складності та обсягу роботи. Зазвичай прості завдання виконуються за 1-3 дні, складніші (дипломні, курсові) - від 5 днів. Точний термін обговоримо після ознайомлення із завданням.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item animate-element delay-2">
+            <div class="faq-question">
+              <span>Чи гарантуєте ви якість робіт?</span>
+              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Так, ми надаємо гарантію якості. У разі необхідності вносимо безкоштовні правки протягом 30 днів після отримання роботи. Також надаємо консультації щодо захисту.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item animate-element delay-3">
+            <div class="faq-question">
+              <span>Як відбувається оплата?</span>
+              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Оплата відбувається поетапно: 30% передоплата, решта - після повного виконання роботи та before отримання. Приймаємо оплату через банківський переказ, на карту або электронні гаманці.</p>
+            </div>
+          </div>
+          
+          <div class="faq-item animate-element">
+            <div class="faq-question">
+              <span>Чи є у вас послуги доопрацювання чи виправлення готових робіт?</span>
+              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="faq-answer">
+              <p>Так, ми надаємо послуги доопрацювання та виправлення існуючих робіт. Наші фахівці проаналізують роботу, виправлять помилки та доповнять її згідно з вашими вимогами.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="button-row">
+          <a href="https://t.me/studysupport_shop" target="_blank" rel="noopener noreferrer" class="btn animate-element">
+            <i class="fas fa-question-circle"></i> Задати питання
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>StudySupport</h3>
-        <p>Якісна допомога у навчанні для студентів та школярів України</p>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Навігація</h3>
-        <ul class="footer-links">
-          <li><a href="#section1">Головна</a></li>
-          <li><a href="#section2">Послуги</a></li>
-          <li><a href="#section3">Відгуки</a></li>
-          <li><a href="#section5">Контакти</a></li>
-          <li><a href="#section6">FAQ</a></li>
-        </ul>
-      </div>
-      
-      <div class="footer-section">
-        <h3>Контакти</h3>
-        <p>Email: ggkpigg@gmail.com</p>
-        <p>Телефон: (099) 337 3406</p>
-        <div class="social-links">
-          <a href="https://t.me/studysupport_shop" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
-          <a href="https://www.tiktok.com/@studysupport.online" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; 2025 StudySupport. Всі права захищені.</p>
-    </div>
-  </footer>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>StudySupport</h3>
+        <p>Якісна допомога у навчанні для студентів та школярів України</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Навігація</h3>
+        <ul class="footer-links">
+          <li><a href="#section1">Головна</a></li>
+          <li><a href="#section2">Послуги</a></li>
+          <li><a href="#section3">Відгуки</a></li>
+          <li><a href="#section5">Контакти</a></li>
+          <li><a href="#section6">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Контакти</h3>
+        <p>Email: ggkpigg@gmail.com</p>
+        <p>Телефон: (099) 337 3406</p>
+        <div class="social-links">
+          <a href="https://t.me/studysupport_shop" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-viber"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 StudySupport. Всі права захищені.</p>
+    </div>
+  </footer>
 
-  <a href="#section1" class="back-to-top" title="Нагору"><i class="fas fa-arrow-up"></i></a>
+  <a href="#section1" class="back-to-top" title="Нагору"><i class="fas fa-arrow-up"></i></a>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Мобільне меню
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('nav');
-      
-      menuToggle.addEventListener('click', function() {
-        nav.classList.toggle('active');
-        
-        if (nav.classList.contains('active')) {
-          menuToggle.innerHTML = '<i class="fas fa-times"></i>';
-        } else {
-          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-      });
-      
-      // Перемикач теми
-      const themeToggle = document.querySelector('.theme-toggle');
-      const themeIcon = themeToggle.querySelector('i');
-      
-      if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-      }
-      
-      themeToggle.addEventListener('click', function() {
-        document.body.classList.toggle('dark-mode');
-        
-        if (document.body.classList.contains('dark-mode')) {
-          themeIcon.classList.remove('fa-moon');
-          themeIcon.classList.add('fa-sun');
-          localStorage.setItem('theme', 'dark');
-        } else {
-          themeIcon.classList.remove('fa-sun');
-          themeIcon.classList.add('fa-moon');
-          localStorage.setItem('theme', 'light');
-        }
-      });
-      
-      // Анімації при скролі
-      const animatedElements = document.querySelectorAll('.animate-element');
-      const animationObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      animatedElements.forEach(element => {
-        animationObserver.observe(element);
-      });
-      
-      // FAQ акордеон
-      const faqItems = document.querySelectorAll('.faq-item');
-      
-      faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        
-        question.addEventListener('click', () => {
-          item.classList.toggle('active');
-        });
-      });
-      
-      // Фіксация хедера при скролі
-      const header = document.querySelector('header');
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      });
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Мобільне меню
+      const menuToggle = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('nav');
+      
+      menuToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+        
+        if (nav.classList.contains('active')) {
+          menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+        } else {
+          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+      });
+      
+      // Перемикач теми
+      const themeToggle = document.querySelector('.theme-toggle');
+      const themeIcon = themeToggle.querySelector('i');
+      
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+      
+      themeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        
+        if (document.body.classList.contains('dark-mode')) {
+          themeIcon.classList.remove('fa-moon');
+          themeIcon.classList.add('fa-sun');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+      
+      // Анімації при скролі
+      const animatedElements = document.querySelectorAll('.animate-element');
+      const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      animatedElements.forEach(element => {
+        animationObserver.observe(element);
+      });
+      
+      // FAQ акордеон
+      const faqItems = document.querySelectorAll('.faq-item');
+      
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+          item.classList.toggle('active');
+        });
+      });
+      
+      // Фіксация хедера при скролі
+      const header = document.querySelector('header');
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
 
-      // --- НОВІ ФУНКЦІЇ ---
+      // --- НОВІ ФУНКЦІЇ ---
 
-      // 1. Кнопка "Повернутися нагору"
-      const backToTopButton = document.querySelector('.back-to-top');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopButton.classList.add('visible');
-        } else {
-          backToTopButton.classList.remove('visible');
-        }
-      });
+      // 1. Кнопка "Повернутися нагору"
+      const backToTopButton = document.querySelector('.back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add('visible');
+        } else {
+          backToTopButton.classList.remove('visible');
+        }
+      });
 
-      // 2. Підсвічування активного пункту меню
-      const sections = document.querySelectorAll('section[id]');
-      const navLinks = document.querySelectorAll('nav a');
+      // 2. Підсвічування активного пункту меню
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav a');
 
-      const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            navLinks.forEach(link => {
-              link.classList.remove('active-link');
-              if (link.getAttribute('href') === `#${id}`) {
-                link.classList.add('active-link');
-              }
-            });
-          }
-        });
-      }, { rootMargin: '-30% 0px -70% 0px' }); 
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              link.classList.remove('active-link');
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active-link');
+              }
+            });
+          }
+        });
+      }, { rootMargin: '-30% 0px -70% 0px' }); 
 
-      sections.forEach(section => {
-        navObserver.observe(section);
-      });
+      sections.forEach(section => {
+        navObserver.observe(section);
+      });
 
-    });
-  </script>
+    });
+  </script>
 </body>
 </html>
