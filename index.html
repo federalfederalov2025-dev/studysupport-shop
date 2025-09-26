@@ -89,8 +89,67 @@
     }
 
     body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text); }
-    body.dark-mode .section { scroll-margin-top: var(--header-offset); min-height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 110px 5% 80px; box-sizing: border-box; position: relative; isolation: isolate; }
-    .section:not(#section1) { content-visibility: auto; contain-intrinsic-size: 1000px; }
+    body.dark-mode .section { background-color: var(--dark-surface); }
+    body.dark-mode header { background-color: rgba(30,30,30,0.96); }
+    body.dark-mode .card,
+    body.dark-mode .testimonial,
+    body.dark-mode .faq-item,
+    body.dark-mode .service-card {
+      background-color: #181818;
+      color: var(--dark-text);
+      border-color: #333;
+    }
+    body.dark-mode .content h2,
+    body.dark-mode .content h3 { color: var(--dark-text); }
+    body.dark-mode .content p { color: #cfcfcf; }
+    body.dark-mode nav a { color: var(--dark-text); }
+    body.dark-mode a { color: #d9d9d9; }
+
+    /* Видимий фокус */
+    :focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; border-radius: 6px; }
+
+    /* ====== ХЕДЕР ====== */
+    header {
+      position: fixed; inset: 0 0 auto 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(6px);
+      box-shadow: var(--shadow);
+      padding: 18px 5%;
+      transition: var(--transition);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header.scrolled { padding: 12px 5%; }
+
+    .header-container { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 14px; }
+
+    header h1 { margin: 0; font-size: clamp(1.4rem, 2vw, 1.9rem); color: var(--primary); }
+    header h1 a { color: inherit; text-decoration: none; }
+
+    /* skip-link */
+    .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus { position: fixed; left: 20px; top: 12px; width: auto; height: auto; background: var(--primary); color: var(--text-light); padding: 10px 14px; border-radius: 8px; z-index: 1100; }
+
+    .menu-toggle { display: none; background: none; border: 2px solid transparent; font-size: 1.5rem; cursor: pointer; color: var(--primary); border-radius: 8px; padding: 6px 10px; }
+
+    nav[aria-label="Основна навігація"] ul { list-style: none; display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    nav a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.95rem; padding: 8px 14px; border-radius: 8px; transition: var(--transition); }
+    nav a:hover, nav a.active-link { background: var(--primary); color: var(--text-light); transform: translateY(-2px); }
+    body.dark-mode nav a.active-link { background: var(--dark-primary); color: var(--dark-bg); }
+
+    .header-controls { display: flex; align-items: center; gap: 8px; width: auto; }
+
+    /* ====== HERO ====== */
+    #section1 { background-image: image-set(url('/t-about-2023-12.jpg') 1x); background-size: cover; background-position: center center; background-repeat: no-repeat; position: relative; }
+    #section1::before { content: ''; position: absolute; inset: 0; background-color: rgba(29,29,31,0.65); z-index: 1; }
+    #section1 .content { position: relative; z-index: 2; }
+    #section1 .content h2, #section1 .content p { color: var(--text-light); text-shadow: 0 2px 8px rgba(0,0,0,0.7); }
+
+    /* ====== СЕКЦІЇ ====== */
+    .section { scroll-margin-top: var(--header-offset); min-height: 100svh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 110px 5% 80px; box-sizing: border-box; position: relative; isolation: isolate; }
     .section:nth-child(even) { background-color: var(--surface-muted); }
     body.dark-mode .section:nth-child(even) { background-color: #1a1a1a; }
 
@@ -123,8 +182,7 @@
     /* ====== СЕРВІСИ ====== */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; justify-content: center; }
     .service-card { background: var(--surface); border-radius: var(--border-radius); padding: 25px; box-shadow: var(--shadow); transition: var(--transition); display: flex; flex-direction: column; }
-    .service-card img { width: 100%; height: auto; aspect-ratio: 5 / 3; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 20px; filter: blur(8px); transition: filter .4s ease; }
-    .service-card img.is-loaded { filter: blur(0); }
+    .service-card img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: 20px; }
     .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
     .service-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
     .service-card h3 { margin-bottom: 15px; color: var(--text-dark); }
@@ -293,28 +351,24 @@
 
         <div class="services-grid">
           <article class="service-card animate-element delay-1">
-            <picture>
-              <source type="image/avif" srcset="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fm=avif&auto=format&fit=crop&w=600&q=60 600w, https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fm=avif&auto=format&fit=crop&w=1000&q=70 1000w" sizes="(max-width: 600px) 100vw, 600px">
-              <source type="image/webp" srcset="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fm=webp&auto=format&fit=crop&w=600&q=70 600w, https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fm=webp&auto=format&fit=crop&w=1000&q=80 1000w" sizes="(max-width: 600px) 100vw, 600px">
-              <img loading="lazy" decoding="async"
-                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=24&q=10"
-                   data-full="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80"
-                   alt="Індивідуальний підхід до кожного клієнта" width="1000" height="600">
-            </picture>
+            <img loading="lazy" decoding="async"
+                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80"
+                 srcset="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=70 600w,
+                         https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=80 1000w"
+                 sizes="(max-width: 600px) 100vw, 600px"
+                 alt="Індивідуальний підхід до кожного клієнта" width="1000" height="600">
             <div class="service-icon"><i class="fas fa-user-cog" aria-hidden="true"></i></div>
             <h3>Індивідуальний підхід</h3>
             <p>Персональний підбір виконавця та програми навчання відповідно до ваших потреб.</p>
           </article>
 
           <article class="service-card animate-element delay-2">
-            <picture>
-              <source type="image/avif" srcset="https://images.unsplash.com/photo-1580582932707-520aed937b7b?fm=avif&auto=format&fit=crop&w=600&q=60 600w, https://images.unsplash.com/photo-1580582932707-520aed937b7b?fm=avif&auto=format&fit=crop&w=1000&q=70 1000w" sizes="(max-width: 600px) 100vw, 600px">
-              <source type="image/webp" srcset="https://images.unsplash.com/photo-1580582932707-520aed937b7b?fm=webp&auto=format&fit=crop&w=600&q=70 600w, https://images.unsplash.com/photo-1580582932707-520aed937b7b?fm=webp&auto=format&fit=crop&w=1000&q=80 1000w" sizes="(max-width: 600px) 100vw, 600px">
-              <img loading="lazy" decoding="async"
-                   src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=24&q=10"
-                   data-full="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=80"
-                   alt="Акуратно виконана наукова робота на столі" width="1000" height="600">
-            </picture>
+            <img loading="lazy" decoding="async"
+                 src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=80"
+                 srcset="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=600&q=70 600w,
+                         https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=80 1000w"
+                 sizes="(max-width: 600px) 100vw, 600px"
+                 alt="Акуратно виконана наукова робота на столі" width="1000" height="600">
             <div class="service-icon"><i class="fas fa-medal" aria-hidden="true"></i></div>
             <h3>Гарантія результату</h3>
             <p>Ми дбаємо про кожну деталь, щоб ваша робота отримала найвищу оцінку. Ви можете бути спокійні за результат і впевнено йти на захист.</p>
@@ -559,23 +613,6 @@
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
       }, { threshold: 0.1 });
       animatedElements.forEach(el => animationObserver.observe(el));
-
-      /* ====== LQIP: підміна превʼю на повнорозмірні зображення ====== */
-      const lqipImgs = document.querySelectorAll('img[data-full]');
-      const lqipObserver = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const img = entry.target;
-          const full = img.getAttribute('data-full');
-          if (full) {
-            img.src = full;
-            img.addEventListener('load', () => img.classList.add('is-loaded'), { once: true });
-            img.removeAttribute('data-full');
-          }
-          obs.unobserve(img);
-        });
-      }, { rootMargin: '200px 0px' });
-      lqipImgs.forEach(img => lqipObserver.observe(img));
 
       /* ====== Фіксація хедера при скролі ====== */
       window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
