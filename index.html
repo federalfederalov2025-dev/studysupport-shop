@@ -5,52 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>StudySupport — Допомога у навчанні для студентів</title>
-  <meta name="description" content="StudySupport допоможе виконати завдання будь-якої складності: від шкільних робіт до дипломних проєктів. Швидко, якісно та з турботою про результат." />
+  <meta name="description" content="StudySupport допоможе виконати завдання будь-якої складності: від шкільних робіт до дипломних проектів. Швидко, якісно та з турботою про результат." />
   <meta name="keywords" content="допомога студентам, курсова робота, дипломна робота, реферат, замовити роботу, StudySupport, навчання" />
   <meta name="author" content="StudySupport Team" />
 
-  <!-- Тема для адресної строки + темний режим -->
+  <!-- UPDATED: системне перемикання кольорів + коректна тема для браузера -->
   <meta name="theme-color" content="#4a6cf7">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121212">
 
-  <!-- ВАЖЛИВО: заміни canonical на свій домен -->
-  <link rel="canonical" href="https://your-domain.example/">
-
-  <!-- Open Graph / Twitter -->
+  <!-- UPDATED: Open Graph / Twitter Cards -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="uk_UA">
   <meta property="og:title" content="StudySupport — Допомога у навчанні для студентів">
-  <meta property="og:description" content="Швидко, якісно та з турботою про результат — від шкільних завдань до дипломних проєктів.">
-  <!-- РЕКОМЕНДАЦІЯ: зроби абсолютний URL -->
-  <meta property="og:image" content="https://your-domain.example/t-about-2023-12.jpg">
-  <meta property="og:url" content="https://your-domain.example/">
+  <meta property="og:description" content="Швидко, якісно та з турботою про результат — від шкільних робіт до дипломних проєктів.">
+  <meta property="og:image" content="t-about-2023-12.jpg"><!-- РЕКОМЕНДАЦІЯ: замініть на абсолютний URL -->
+  <meta property="og:url" content="/">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Preconnect / Prefetch -->
+  <!-- Іконки -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <!-- UPDATED: Продуктивність: preconnect/dns-prefetch + preload hero -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link rel="dns-prefetch" href="//images.unsplash.com">
-  <link rel="preconnect" href="https://unpkg.com" crossorigin>
-  <link rel="dns-prefetch" href="//unpkg.com">
   <link rel="preconnect" href="https://t.me">
   <link rel="dns-prefetch" href="//t.me">
+  <link rel="preload" as="image" href="t-about-2023-12.jpg" imagesrcset="t-about-2023-12.jpg 1x">
 
-  <!-- Пріоритет LCP-зображення -->
-  <link rel="preload" as="image" href="/t-about-2023-12.jpg" fetchpriority="high" imagesrcset="/t-about-2023-12.jpg 1x">
-
-  <!-- Іконочний шрифт (можна залишити; для SRI треба точний хеш) -->
+  <!-- Іконочний шрифт -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- (Опційно) CSP як meta для локального тесту; на проді — краще заголовки сервера
-       УВАГА: через inline CSS/JS тут дозволено 'unsafe-inline'. -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' https: data:; script-src 'self' https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline'; style-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com data:; connect-src 'self'; frame-ancestors 'none';">
-
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
 
   <style>
     /* ====== ТЕМА / БАЗА ====== */
@@ -64,6 +53,7 @@
       --text-light: #fff;
       --surface: #ffffff;
       --surface-muted: #f5f5f5;
+      --overlay-dark: rgba(28, 28, 28, 0.85);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
       --dark-bg: #121212;
       --dark-text: #e0e0e0;
@@ -71,13 +61,10 @@
       --dark-primary: #bb86fc;
       --border-radius: 12px;
       --transition: all 0.3s ease;
-      --header-offset: 110px;
+      --header-offset: 110px; /* UPDATED: змінна для offset якірних посилань */
     }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: var(--header-offset); /* якірні посилання */
-    }
+    html { scroll-behavior: smooth; }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -87,12 +74,16 @@
       overflow-x: hidden;
       transition: background-color .3s ease, color .3s ease;
       line-height: 1.6;
-      color-scheme: light dark;
+      color-scheme: light dark; /* UPDATED: підказка UA для інпутів/скролбарів */
     }
 
-    body.dark-mode { background-color: var(--dark-bg); color: var(--dark-text); }
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
     body.dark-mode .section { background-color: var(--dark-surface); }
     body.dark-mode header { background-color: var(--dark-surface); }
+    body.dark-mode .card,
     body.dark-mode .testimonial,
     body.dark-mode .faq-item,
     body.dark-mode .service-card {
@@ -100,159 +91,280 @@
       color: var(--dark-text);
       border-color: #333;
     }
-    body.dark-mode .content h2, body.dark-mode .content h3 { color: var(--dark-text); }
+    body.dark-mode .content h2,
+    body.dark-mode .content h3 { color: var(--dark-text); }
     body.dark-mode .content p { color: #ccc; }
-    body.dark-mode nav a, body.dark-mode a { color: var(--dark-text); }
+    body.dark-mode nav a { color: var(--dark-text); }
+    body.dark-mode a { color: var(--dark-text); }
 
-    :focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+    /* UPDATED: видимий фокус для клавіатури */
+    :focus-visible {
+      outline: 3px solid var(--primary);
+      outline-offset: 2px;
+    }
 
     /* ====== ХЕДЕР ====== */
     header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(6px);
       box-shadow: var(--shadow);
       padding: 18px 5%;
       transition: var(--transition);
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
     header.scrolled { padding: 12px 5%; }
 
-    .header-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-    header h1 { margin: 0; font-size: 1.9rem; color: var(--primary); }
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
 
+    header h1 {
+      margin: 0;
+      font-size: 1.9rem;
+      color: var(--primary);
+    }
+
+    /* UPDATED: skip-link для доступності */
     .skip-link {
-      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px; height: 1px;
+      overflow: hidden;
     }
     .skip-link:focus {
-      position: fixed; left: 20px; top: 12px; width: auto; height: auto;
-      background: var(--primary); color: var(--text-light); padding: 10px 14px; border-radius: 8px; z-index: 1100;
+      position: fixed;
+      left: 20px; top: 12px;
+      width: auto; height: auto;
+      background: var(--primary);
+      color: var(--text-light);
+      padding: 10px 14px;
+      border-radius: 8px;
+      z-index: 1100;
     }
 
     .menu-toggle {
-      display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary);
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary);
     }
 
     nav[aria-label="Основна навігація"] ul {
-      list-style: none; padding: 0; margin: 0;
-      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
+
     nav a {
-      text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.95rem;
-      padding: 8px 14px; border-radius: 8px; transition: var(--transition);
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: var(--transition);
     }
-    nav a:hover, nav a.active-link { background: var(--primary); color: var(--text-light); transform: translateY(-2px); }
-    body.dark-mode nav a.active-link { background: var(--dark-primary); color: var(--dark-bg); }
+    nav a:hover, nav a.active-link {
+      background: var(--primary);
+      color: var(--text-light);
+      transform: translateY(-2px);
+    }
+    body.dark-mode nav a.active-link {
+      background: var(--dark-primary);
+      color: var(--dark-bg);
+    }
 
-    .header-controls { display: flex; align-items: center; gap: 8px; width: auto; }
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      /* UPDATED: фікс відсутніх одиниць вимірювання */
+      width: auto;
+    }
 
-    /* ====== HERO (зображення через <img>/<picture> для кращого LCP) ====== */
-    .hero { position: relative; }
-    .hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-    .hero-media img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.6); }
-    #section1 .content { position: relative; z-index: 1; }
+    /* ====== HERO ====== */
+    #section1 {
+      background-image: url('t-about-2023-12.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    #section1::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-color: rgba(29,29,31,0.65);
+      z-index: 1;
+    }
+    #section1 .content { position: relative; z-index: 2; }
+    #section1 .content h2,
+    #section1 .content p {
+      color: var(--text-light);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
 
     /* ====== СЕКЦІЇ ====== */
     .section {
       scroll-margin-top: var(--header-offset);
-      min-height: 100svh;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      padding: 110px 5% 80px; box-sizing: border-box; position: relative; isolation: isolate;
-
-      /* Boost: відкладене розкладання поза екраном */
-      content-visibility: auto;
-      contain-intrinsic-size: 1px 1000px;
+      min-height: 100svh; /* UPDATED: краще для моб. браузерів */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 110px 5% 80px;
+      box-sizing: border-box;
+      position: relative;
+      isolation: isolate;
     }
     .section:nth-child(even) { background-color: var(--surface-muted); }
     body.dark-mode .section:nth-child(even) { background-color: #1a1a1a; }
 
     .content { width: 100%; max-width: 1200px; margin: 0 auto; }
+
     .content h2 {
-      font-size: 2.6rem; margin: 0 0 16px; color: var(--text-dark);
-      position: relative; padding-bottom: 14px;
+      font-size: 2.6rem;
+      margin: 0 0 16px;
+      color: var(--text-dark);
+      position: relative;
+      padding-bottom: 14px;
     }
     .content h2::after {
-      content: ""; position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
-      width: 80px; height: 4px; background: var(--primary); border-radius: 2px;
+      content: "";
+      position: absolute; left: 50%; bottom: 0;
+      transform: translateX(-50%);
+      width: 80px; height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
     }
     .content h3 { font-size: 1.8rem; margin: 30px 0 15px; color: var(--text-dark); }
     .content p { font-size: 1.14rem; line-height: 1.7; color: var(--text-med); margin-bottom: 20px; }
     .content a { text-decoration: none; color: var(--text-dark); }
 
     /* ====== КНОПКИ ====== */
-    .button-row { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-top: 22px; }
+    .button-row {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      justify-content: center; margin-top: 22px;
+    }
     .btn {
-      padding: 14px 26px; border-radius: 999px; border: none; cursor: pointer;
-      font-weight: 700; font-size: 1.05rem; color: var(--text-light); background: var(--primary);
-      box-shadow: var(--shadow); position: relative; overflow: hidden; transition: var(--transition);
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
+      padding: 14px 26px;
+      border-radius: 999px; border: none; cursor: pointer;
+      font-weight: 700; font-size: 1.05rem;
+      color: var(--text-light); background: var(--primary);
+      box-shadow: var(--shadow);
+      position: relative; overflow: hidden;
+      transition: var(--transition);
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none;
     }
     .btn::after {
       content: ""; position: absolute; inset: 0; left: -100%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
       transition: .5s;
     }
-    @media (hover:hover) { .btn:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,0.18); } }
+    .btn:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(0,0,0,0.18); }
     .btn:hover::after { left: 100%; }
     .btn-accent { background: var(--accent); }
     .btn-accent:hover { background: var(--accent-hover); }
 
-    .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
     body.dark-mode .btn-outline { color: var(--dark-primary); border-color: var(--dark-primary); }
     .btn-outline:hover { background: var(--primary); color: var(--text-light); }
     body.dark-mode .btn-outline:hover { background: var(--dark-primary); color: var(--dark-bg); }
 
     /* ====== ПЕРЕМИКАЧ ТЕМИ ====== */
     .theme-toggle {
-      margin-left: 8px; padding: 10px; background: var(--primary); color: var(--text-light);
-      font-weight: bold; border: none; border-radius: 50%; cursor: pointer; width: 44px; height: 44px;
+      margin-left: 8px;
+      padding: 10px;
+      background: var(--primary);
+      color: var(--text-light);
+      font-weight: bold;
+      border: none; border-radius: 50%;
+      cursor: pointer; width: 44px; height: 44px;
       display: flex; align-items: center; justify-content: center;
     }
     .theme-toggle:hover { background: var(--primary-hover); }
 
     /* ====== СЕРВІСИ ====== */
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; justify-content: center; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px; margin: 40px 0; justify-content: center;
+    }
     .service-card {
-      background: var(--surface); border-radius: var(--border-radius); padding: 25px; box-shadow: var(--shadow);
-      transition: var(--transition); display: flex; flex-direction: column;
+      background: var(--surface);
+      border-radius: var(--border-radius);
+      padding: 25px; box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex; flex-direction: column;
     }
     .service-card img {
-      width: 100%; height: auto; aspect-ratio: 5 / 3; object-fit: cover;
+      width: 100%; height: 200px; object-fit: cover;
       border-radius: var(--border-radius); margin-bottom: 20px;
     }
     .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-    .service-icon { font-size: 0; margin-bottom: 20px; } /* приховуємо текстовий вузол */
-    .service-icon i { font-size: 3rem; color: var(--primary); }
+    .service-icon { font-size: 3rem; color: var(--primary); margin-bottom: 20px; }
+    .service-card h3 { margin-bottom: 15px; color: var(--text-dark); }
+    body.dark-mode .service-card h3 { color: var(--dark-text); }
 
     /* ====== ВІДГУКИ ====== */
-    .testimonials-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 40px 0; }
+    .testimonials-container {
+      display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 40px 0;
+    }
     .testimonial {
-      background: var(--surface); border-radius: var(--border-radius); padding: 25px; box-shadow: var(--shadow);
-      max-width: 350px; text-align: left; min-height: 170px; /* резервуємо місце */
+      background: var(--surface);
+      border-radius: var(--border-radius);
+      padding: 25px; box-shadow: var(--shadow);
+      max-width: 350px; text-align: left;
     }
     .testimonial-text { font-style: italic; margin-bottom: 20px; }
     .testimonial-author { display: flex; align-items: center; }
-    .author-avatar-img { width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; object-fit: cover; }
+    .author-avatar-img {
+      width: 50px; height: 50px; border-radius: 50%; margin-right: 15px; object-fit: cover;
+    }
     .author-info h4 { margin: 0; font-size: 1.1rem; }
     .author-info p { margin: 5px 0 0; font-size: 0.9rem; color: var(--text-med); }
     body.dark-mode .author-info p { color: #ccc; }
 
     /* ====== КОНТАКТИ ====== */
-    .contact-info { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 40px 0; }
+    .contact-info {
+      display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin: 40px 0;
+    }
     .contact-item { display: flex; flex-direction: column; align-items: center; max-width: 260px; }
-    .contact-icon { font-size: 0; margin-bottom: 15px; }
-    .contact-icon i { font-size: 2.5rem; color: var(--primary); }
+    .contact-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
     .contact-item h3 { margin-bottom: 10px; }
 
-    /* ====== FAQ ====== */
+    /* ====== FAQ (UPDATED: семантичні кнопки) ====== */
     .faq-container { max-width: 800px; margin: 40px auto; }
     .faq-item {
-      background: var(--surface); border-radius: var(--border-radius);
+      background: var(--surface);
+      border-radius: var(--border-radius);
       margin-bottom: 15px; overflow: hidden; box-shadow: var(--shadow);
     }
     .faq-question {
-      width: 100%; padding: 20px; display: flex; justify-content: space-between; align-items: center;
-      font-weight: 600; font-size: 1.1rem; background: none; border: none; cursor: pointer; text-align: left;
+      width: 100%;
+      padding: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-weight: 600; font-size: 1.1rem;
+      background: none; border: none; cursor: pointer; text-align: left;
     }
     .faq-answer { padding: 0 20px 20px; display: none; }
     .faq-item.active .faq-answer { display: block; }
@@ -260,7 +372,11 @@
     .faq-item.active .faq-toggle { transform: rotate(180deg); }
 
     /* ====== ФУТЕР ====== */
-    footer { background: var(--text-dark); color: var(--text-light); padding: 40px 5%; text-align: center; }
+    footer {
+      background: var(--text-dark);
+      color: var(--text-light);
+      padding: 40px 5%; text-align: center;
+    }
     .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; }
     .footer-section { flex: 1; min-width: 250px; }
     .footer-section h3 { margin-bottom: 20px; color: var(--text-light); }
@@ -276,14 +392,16 @@
 
     /* ====== Back to top ====== */
     .back-to-top {
-      position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
-      background-color: var(--primary); color: var(--text-light); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; z-index: 998;
-      opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s, transform .3s; transform: translateY(20px);
+      position: fixed; bottom: 20px; right: 20px;
+      width: 50px; height: 50px; background-color: var(--primary);
+      color: var(--text-light); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 998; opacity: 0; visibility: hidden;
+      transition: opacity .3s, visibility .3s, transform .3s;
+      transform: translateY(20px);
     }
     .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
     .back-to-top:hover { background-color: var(--primary-hover); }
-    .back-to-top:focus-visible { box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--primary); }
 
     /* ====== Адаптивність ====== */
     @media (max-width: 992px) {
@@ -294,10 +412,19 @@
     @media (max-width: 768px) {
       header { padding: 15px 5%; }
       .header-container { flex-direction: column; align-items: flex-start; }
-      .menu-toggle { display: block; position: absolute; right: 20px; top: 20px; }
-      nav[aria-label="Основна навігація"] { width: 100%; max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+      .menu-toggle {
+        display: block;
+        position: absolute; right: 20px; top: 20px;
+      }
+      nav[aria-label="Основна навігація"] {
+        width: 100%;
+        max-height: 0; overflow: hidden;
+        transition: max-height .3s ease;
+      }
       nav[aria-label="Основна навігація"].active { max-height: 300px; }
-      nav[aria-label="Основна навігація"] ul { flex-direction: column; padding: 20px 0; gap: 0; }
+      nav[aria-label="Основна навігація"] ul {
+        flex-direction: column; padding: 20px 0; gap: 0;
+      }
       nav a { display: block; padding: 12px 0; border-radius: 0; text-align: center; }
       .header-controls { width: 100%; justify-content: center; margin-top: 15px; }
       .section { padding: 100px 5% 60px; }
@@ -320,48 +447,47 @@
     .delay-2 { transition-delay: .4s; }
     .delay-3 { transition-delay: .6s; }
 
-    /* Reduce motion */
+    /* UPDATED: повага до користувачів з reduce motion */
     @media (prefers-reduced-motion: reduce) {
       * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
       .animate-element { opacity: 1 !important; transform: none !important; }
     }
   </style>
 
-  <!-- JSON-LD: Organization -->
+  <!-- UPDATED: Структуровані дані для SEO (Organization) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Organization",
     "name":"StudySupport",
-    "url":"https://your-domain.example/",
-    "logo":"https://your-domain.example/apple-touch-icon.png",
+    "url":"/",
+    "logo":"/apple-touch-icon.png",
     "description":"Допомога у навчанні для студентів та школярів України",
-    "contactPoint":[{"@type":"ContactPoint","contactType":"customer support","email":"ggkpigg@gmail.com","telephone":"+380993373406","areaServed":"UA","availableLanguage":["uk","ru","en"]}],
-    "sameAs":["https://t.me/studysupport_shop"]
-  }
-  </script>
-
-  <!-- JSON-LD: FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Як швидко ви можете виконати завдання?","acceptedAnswer":{"@type":"Answer","text":"Термін залежить від складності та обсягу. Прості завдання — 1–3 дні, дипломні/курсові — від 5 днів."}},
-      {"@type":"Question","name":"Чи гарантуєте ви якість робіт?","acceptedAnswer":{"@type":"Answer","text":"Так. Безкоштовні правки протягом 30 днів після отримання роботи. Консультації щодо захисту."}},
-      {"@type":"Question","name":"Як відбувається оплата?","acceptedAnswer":{"@type":"Answer","text":"30% передоплати, решта — перед отриманням. Приймаємо переказ, на карту та електронні гаманці."}},
-      {"@type":"Question","name":"Чи є послуги доопрацювання?","acceptedAnswer":{"@type":"Answer","text":"Так, аналіз, виправлення та доповнення існуючих робіт згідно з вашими вимогами."}}
+    "contactPoint": [
+      {
+        "@type":"ContactPoint",
+        "contactType":"customer support",
+        "email":"ggkpigg@gmail.com",
+        "telephone":"+380993373406",
+        "areaServed":"UA",
+        "availableLanguage":["uk","ru","en"]
+      }
+    ],
+    "sameAs":[
+      "https://t.me/studysupport_shop"
     ]
   }
   </script>
 </head>
 <body>
+  <!-- UPDATED: Skip to content -->
   <a class="skip-link" href="#main">Пропустити до основного контенту</a>
 
   <header>
     <div class="header-container">
       <h1>StudySupport</h1>
 
+      <!-- UPDATED: aria-атрибути для меню -->
       <button class="menu-toggle" type="button" aria-label="Відкрити основну навігацію" aria-expanded="false" aria-controls="primary-navigation">
         <i class="fas fa-bars" aria-hidden="true"></i>
       </button>
@@ -385,47 +511,31 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <!-- HERO -->
-    <section class="section hero" id="section1" aria-labelledby="hero-title">
-      <div class="hero-media" aria-hidden="true">
-        <picture>
-          <!-- якщо є ці файли — браузер візьме кращий формат -->
-          <source type="image/avif" srcset="/t-about-2023-12.avif">
-          <source type="image/webp" srcset="/t-about-2023-12.webp">
-          <img src="/t-about-2023-12.jpg" alt=""
-               width="1600" height="900" decoding="async" fetchpriority="high">
-        </picture>
-      </div>
-
+    <section class="section" id="section1" aria-labelledby="hero-title">
       <div class="content">
         <h2 id="hero-title" class="animate-element">Ти не один — ми тут, щоб допомогти!</h2>
         <p class="animate-element delay-1">Допоможемо виконати завдання будь-якої складності — швидко, якісно та з турботою про результат. Обери, хто ти:</p>
 
+        <!-- UPDATED: кнопки стали <a>, без inline JS -->
         <div class="button-row">
           <a class="btn animate-element delay-2" href="https://t.me/studysupport_ua_bot" target="_blank" rel="noopener noreferrer">
             <i class="fas fa-user-check" aria-hidden="true"></i> Я замовник
           </a>
-          <a class="btn btn-accent animate-element delay-2" href="https://t.me/studysupport_shop" target="_blank" rel="noopener noreferrer" rel="me">
+          <a class="btn btn-accent animate-element delay-2" href="https://t.me/studysupport_shop" target="_blank" rel="noopener noreferrer">
             <i class="fas fa-user-tie" aria-hidden="true"></i> Я виконавець
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Послуги -->
     <section class="section" id="section2" aria-labelledby="services-title">
       <div class="content">
         <h2 id="services-title" class="animate-element">Широкий спектр послуг для твого успіху</h2>
 
         <div class="services-grid">
           <article class="service-card animate-element delay-1">
-            <img loading="lazy" decoding="async"
-                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=75"
-                 srcset="
-                   https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=480&q=70 480w,
-                   https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=75 800w,
-                   https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80 1200w"
-                 sizes="(max-width: 600px) 90vw, (max-width: 1200px) 45vw, 400px"
+            <img loading="lazy"
+                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                  alt="Індивідуальний підхід до кожного клієнта" width="1000" height="600">
             <div class="service-icon"><i class="fas fa-user-cog" aria-hidden="true"></i></div>
             <h3>Індивідуальний підхід</h3>
@@ -433,13 +543,8 @@
           </article>
 
           <article class="service-card animate-element delay-2">
-            <img loading="lazy" decoding="async"
-                 src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=75"
-                 srcset="
-                   https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=480&q=70 480w,
-                   https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=75 800w,
-                   https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80 1200w"
-                 sizes="(max-width: 600px) 90vw, (max-width: 1200px) 45vw, 400px"
+            <img loading="lazy"
+                 src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                  alt="Акуратно виконана наукова робота на столі" width="1000" height="600">
             <div class="service-icon"><i class="fas fa-medal" aria-hidden="true"></i></div>
             <h3>Гарантія результату</h3>
@@ -451,7 +556,6 @@
       </div>
     </section>
 
-    <!-- Відгуки -->
     <section class="section" id="section3" aria-labelledby="testimonials-title">
       <div class="content">
         <h2 id="testimonials-title" class="animate-element">Що кажуть наші клієнти</h2>
@@ -460,7 +564,7 @@
           <blockquote class="testimonial animate-element delay-1">
             <p class="testimonial-text">"Звернувся до StudySupport через складний курсовий проєкт. Зробили все якісно та вчасно. Тепер звертаюся постійно!"</p>
             <footer class="testimonial-author">
-              <img loading="lazy" decoding="async" src="photo1.jpg" alt="Андрій" class="author-avatar-img" width="50" height="50">
+              <img loading="lazy" src="photo1.jpg" alt="Андрій" class="author-avatar-img" width="50" height="50">
               <div class="author-info">
                 <h4>Андрій</h4>
                 <p>Студент, КНЕУ</p>
@@ -471,7 +575,7 @@
           <blockquote class="testimonial animate-element delay-2">
             <p class="testimonial-text">"Дякую за чудово виконану дипломну роботу! Захистила на відмінно. Рецензент відзначив глибину дослідження."</p>
             <footer class="testimonial-author">
-              <img loading="lazy" decoding="async" src="photo3.jpg" alt="Марія" class="author-avatar-img" width="50" height="50">
+              <img loading="lazy" src="photo3.jpg" alt="Марія" class="author-avatar-img" width="50" height="50">
               <div class="author-info">
                 <h4>Марія</h4>
                 <p>Випускниця, КПІ</p>
@@ -482,7 +586,7 @@
           <blockquote class="testimonial animate-element delay-3">
             <p class="testimonial-text">"Замовляв кілька робіт, усі виконані на високому рівні. Ціную професійний підхід та дотримання дедлайнів."</p>
             <footer class="testimonial-author">
-              <img loading="lazy" decoding="async" src="photo2.jpg" alt="Сергій" class="author-avatar-img" width="50" height="50">
+              <img loading="lazy" src="photo2.jpg" alt="Сергій" class="author-avatar-img" width="50" height="50">
               <div class="author-info">
                 <h4>Сергій</h4>
                 <p>Студент, ЛНУ</p>
@@ -499,7 +603,6 @@
       </div>
     </section>
 
-    <!-- Контакти -->
     <section class="section" id="section5" aria-labelledby="contacts-title">
       <div class="content">
         <h2 id="contacts-title" class="animate-element">Контакти</h2>
@@ -530,12 +633,12 @@
       </div>
     </section>
 
-    <!-- FAQ -->
     <section class="section" id="section6" aria-labelledby="faq-title">
       <div class="content">
         <h2 id="faq-title" class="animate-element">Поширені запитання</h2>
 
         <div class="faq-container">
+          <!-- UPDATED: кнопки з aria-expanded/controls -->
           <div class="faq-item animate-element delay-1">
             <button class="faq-question" id="faq1" aria-expanded="false" aria-controls="faq1-desc">
               <span>Як швидко ви можете виконати завдання?</span>
@@ -562,6 +665,7 @@
               <span class="faq-toggle"><i class="fas fa-chevron-down" aria-hidden="true"></i></span>
             </button>
             <div class="faq-answer" id="faq3-desc" role="region" aria-labelledby="faq3">
+              <!-- UPDATED: мовні правки -->
               <p>Оплата відбувається поетапно: 30% передоплати, решта — після повного виконання роботи та <strong>перед</strong> отриманням. Приймаємо оплату через банківський переказ, на картку або електронні гаманці.</p>
             </div>
           </div>
@@ -630,51 +734,24 @@
     </div>
   </footer>
 
+  <!-- UPDATED: aria-label + icon aria-hidden -->
   <a href="#section1" class="back-to-top" aria-label="Нагору" title="Нагору">
     <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </a>
 
   <noscript>
+    <!-- UPDATED: прогресивне покращення -->
     <style>.animate-element{opacity:1 !important;transform:none !important}</style>
     <div style="padding:1rem;text-align:center;background:#fffae6;color:#333;">
       Для повної функціональності сайту увімкніть JavaScript.
     </div>
   </noscript>
 
-  <!-- Web Vitals RUM (живі метрики) -->
-  <script async src="https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.umd.min.js"></script>
-  <script>
-    // Легкий режим для повільних мереж / економії даних
-    (function () {
-      var nc = navigator.connection;
-      if (nc && (nc.saveData || nc.downlink < 1.5)) {
-        document.documentElement.classList.add('lite-mode');
-      }
-    })();
-
-    window.addEventListener('load', function () {
-      try {
-        if (window.webVitals) {
-          var send = function (t, m) {
-            try {
-              navigator.sendBeacon
-                ? navigator.sendBeacon('/rum', JSON.stringify({ t: t, v: m.value }))
-                : fetch('/rum', { method: 'POST', keepalive: true, headers: { 'content-type': 'application/json' }, body: JSON.stringify({ t: t, v: m.value }) });
-            } catch (e) {}
-          };
-          webVitals.onLCP(function (m) { send('LCP', m); });
-          webVitals.onCLS(function (m) { send('CLS', m); });
-          webVitals.onINP(function (m) { send('INP', m); });
-        }
-      } catch (e) {}
-    });
-  </script>
-
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const header = document.querySelector('header');
 
-      /* ====== Мобільне меню ====== */
+      /* ====== Мобільне меню (UPDATED: aria-expanded + не перезаписуємо innerHTML) ====== */
       const menuToggle = document.querySelector('.menu-toggle');
       const menuIcon = menuToggle.querySelector('i');
       const nav = document.getElementById('primary-navigation');
@@ -687,6 +764,7 @@
         menuIcon.classList.remove('fa-times');
         menuIcon.classList.add('fa-bars');
       }
+
       function openNav() {
         nav.classList.add('active');
         menuToggle.setAttribute('aria-expanded', 'true');
@@ -694,13 +772,21 @@
         menuIcon.classList.remove('fa-bars');
         menuIcon.classList.add('fa-times');
       }
-      menuToggle.addEventListener('click', function () {
-        (menuToggle.getAttribute('aria-expanded') === 'true') ? closeNav() : openNav();
-      });
-      navLinks.forEach(link => link.addEventListener('click', closeNav));
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 
-      /* ====== Перемикач теми ====== */
+      menuToggle.addEventListener('click', function () {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        expanded ? closeNav() : openNav();
+      });
+
+      // Закриваємо меню після кліку по пункту або натиснення Escape
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => closeNav());
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeNav();
+      });
+
+      /* ====== Перемикач теми (UPDATED: враховує system preference + theme-color) ====== */
       const themeToggle = document.querySelector('.theme-toggle');
       const themeIcon = themeToggle.querySelector('i');
       const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -710,8 +796,10 @@
         document.body.classList.toggle('dark-mode', isDark);
         themeIcon.classList.toggle('fa-moon', !isDark);
         themeIcon.classList.toggle('fa-sun', isDark);
+        // Оновлюємо theme-color для адресної строки моб. браузерів
         if (themeMeta) themeMeta.setAttribute('content', isDark ? '#121212' : '#4a6cf7');
       }
+
       const storedTheme = localStorage.getItem('theme');
       if (storedTheme) {
         applyTheme(storedTheme);
@@ -719,6 +807,7 @@
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         applyTheme(prefersDark ? 'dark' : 'light');
       }
+
       themeToggle.addEventListener('click', function () {
         const isDark = document.body.classList.toggle('dark-mode');
         themeIcon.classList.toggle('fa-moon', !isDark);
@@ -730,11 +819,13 @@
       /* ====== Анімації при скролі ====== */
       const animatedElements = document.querySelectorAll('.animate-element');
       const animationObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
       }, { threshold: 0.1 });
       animatedElements.forEach(el => animationObserver.observe(el));
 
-      /* ====== FAQ акордеон ====== */
+      /* ====== FAQ акордеон (UPDATED: aria-expanded) ====== */
       const faqButtons = document.querySelectorAll('.faq-question');
       faqButtons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -745,7 +836,7 @@
         });
       });
 
-      /* ====== Хедер/скрол ====== */
+      /* ====== Фіксація хедера при скролі ====== */
       window.addEventListener('scroll', function () {
         header.classList.toggle('scrolled', window.scrollY > 50);
       });
@@ -753,11 +844,14 @@
       /* ====== Кнопка "Нагору" ====== */
       const backToTopButton = document.querySelector('.back-to-top');
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) backToTopButton.classList.add('visible');
-        else backToTopButton.classList.remove('visible');
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add('visible');
+        } else {
+          backToTopButton.classList.remove('visible');
+        }
       });
 
-      /* ====== Активні пункти меню ====== */
+      /* ====== Підсвітка активного пункту меню + aria-current ====== */
       const sections = document.querySelectorAll('section[id]');
       const navObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -773,16 +867,9 @@
       }, { rootMargin: '-30% 0px -70% 0px' });
       sections.forEach(section => navObserver.observe(section));
 
-      /* Рік у футері */
+      /* ====== Поточний рік у футері ====== */
       const yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-      /* ====== Реєстрація Service Worker ====== */
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-          navigator.serviceWorker.register('/sw.js').catch(function(){});
-        });
-      }
     });
   </script>
 </body>
